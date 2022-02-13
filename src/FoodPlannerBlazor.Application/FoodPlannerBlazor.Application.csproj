@@ -8,4 +8,11 @@
     <ProjectReference Include="..\FoodPlannerBlazor.Infrastructure\FoodPlannerBlazor.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="BusinessLogic\Category\Handlers\" />
+    <Folder Include="BusinessLogic\Category\Commands\" />
+    <Folder Include="BusinessLogic\Category\Queries\" />
+    <Folder Include="BusinessLogic\Unit\Commands\" />
+  </ItemGroup>
+
 </Project>
