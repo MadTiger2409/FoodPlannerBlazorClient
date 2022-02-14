@@ -1,6 +1,12 @@
-﻿using System;
+﻿using FoodPlannerBlazor.Domain.Entities.Common;
+using System;
 
 namespace FoodPlannerBlazor.Domain.Entities.PlannedMeal
 {
-    public record PlannedMeal(int Id, byte OrdinalNumber, DateTime ScheduledFor, Meal.Meal Meal);
+    public class PlannedMeal : BaseEntity
+    {
+        public byte OrdinalNumber { get; set; }
+        public DateTime ScheduledFor { get; set; }
+        public Meal.Meal Meal { get; set; }
+    }
 }

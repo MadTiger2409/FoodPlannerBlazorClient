@@ -1,4 +1,8 @@
-﻿namespace FoodPlannerBlazor.Domain.Entities.Meal
+﻿using FoodPlannerBlazor.Domain.Entities.Common;
+
+namespace FoodPlannerBlazor.Domain.Entities.Meal
 {
-    public record MealShort(int Id, string Name);
+    public class MealShort : NamedEntity
+    {
+    }
 }

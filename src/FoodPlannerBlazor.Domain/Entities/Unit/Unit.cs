@@ -1,4 +1,8 @@
-﻿namespace FoodPlannerBlazor.Domain.Entities.Unit
+﻿using FoodPlannerBlazor.Domain.Entities.Common;
+
+namespace FoodPlannerBlazor.Domain.Entities.Unit
 {
-    public record Unit(int Id, string Name);
+    public class Unit : NamedEntity
+    {
+    }
 }

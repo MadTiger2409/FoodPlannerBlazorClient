@@ -1,4 +1,9 @@
-﻿namespace FoodPlannerBlazor.Domain.Entities.Product
+﻿using FoodPlannerBlazor.Domain.Entities.Common;
+
+namespace FoodPlannerBlazor.Domain.Entities.Product
 {
-    public record Product(int Id, string Name, Category.Category Category);
+    public class Product : NamedEntity
+    {
+        public Category.Category Category { get; set; }
+    }
 }

@@ -1,4 +1,11 @@
-﻿namespace FoodPlannerBlazor.Domain.Entities.Ingredient
+﻿using FoodPlannerBlazor.Domain.Entities.Common;
+
+namespace FoodPlannerBlazor.Domain.Entities.Ingredient
 {
-    public record IngredientForMeal(int Id, float Amount, Product.Product Product, Unit.Unit Unit);
+    public class IngredientForMeal : BaseEntity
+    {
+        public float Amount { get; set; }
+        public Product.Product Product { get; set; }
+        public Unit.Unit Unit { get; set; }
+    }
 }
