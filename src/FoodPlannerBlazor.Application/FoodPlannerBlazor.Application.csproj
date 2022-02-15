@@ -9,9 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BusinessLogic\Category\Handlers\" />
-    <Folder Include="BusinessLogic\Category\Commands\" />
-    <Folder Include="BusinessLogic\Category\Queries\" />
+    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
   </ItemGroup>
 
 </Project>
