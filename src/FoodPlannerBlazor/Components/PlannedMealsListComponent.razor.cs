@@ -1,17 +1,24 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using FoodPlannerBlazor.ViewModels;
+using Microsoft.AspNetCore.Components;
 using System;
-using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FoodPlannerBlazor.Components
 {
     public partial class PlannedMealsListComponent : ComponentBase
     {
+        [Inject]
+        public PlannedMealsListComponentViewModel ViewModel { get; set; }
+
         [Parameter]
         public DateTime From { get; set; } = DateTime.UtcNow.Date;
 
         [Parameter]
         public DateTime To { get; set; } = DateTime.UtcNow.Date;
 
-        public List<int> Ints { get; set; } = new() { 1, 2, 3 };
+        protected override async Task OnInitializedAsync()
+        {
+            await ViewModel.GetPlannedMealsFromApiAsync(From, To);
+        }
     }
 }

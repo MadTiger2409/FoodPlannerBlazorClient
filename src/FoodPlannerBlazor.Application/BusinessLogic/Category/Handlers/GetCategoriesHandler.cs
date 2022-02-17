@@ -22,7 +22,7 @@ namespace FoodPlannerBlazor.Application.BusinessLogic.Category.Handlers
             var httpClient = _clientFactory.CreateClient("categories");
 
             if (!string.IsNullOrWhiteSpace(request.Name))
-                parameters = QueryHelpers.AddQueryString("", "name", request.Name);
+                parameters = QueryHelpers.AddQueryString(string.Empty, "name", request.Name);
 
             return await httpClient.GetWithDeserializationAsync<List<Domain.Entities.Category.Category>>(parameters);
         }

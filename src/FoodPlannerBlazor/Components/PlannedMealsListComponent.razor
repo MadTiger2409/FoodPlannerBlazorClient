@@ -1,7 +1,7 @@
 ﻿@page "/plannedMeals"
 
 <div class="card">
-    @if (Ints == null || Ints.Count == 0)
+    @if (ViewModel.Response == null || ViewModel.Response.Value.Count == 0)
     {
         <h5 class="card-header">No data</h5>
         <div class="card-body">
@@ -11,7 +11,7 @@
     else
     {
         <div class="card-body">
-            <h5 class="card-title">@From.ToShortDateString()</h5>
+            <h5 class="card-title">@From.Date.ToString("yyyy-MM-dd") to @To.Date.ToString("yyyy-MM-dd")</h5>
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="heading0">
