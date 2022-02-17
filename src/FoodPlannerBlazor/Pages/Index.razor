@@ -1,2 +1,43 @@
 ﻿@page "/"
-<PlannedMealsListComponent From="@DateTime.UtcNow.Date.AddDays(2)" />
+@inject ISender mediator
+@*<PlannedMealsListComponent From="@DateTime.UtcNow.Date.AddDays(2)" />*@
+
+@if (Response.Success)
+{
+    foreach (var category in Response.Value)
+    {
+        <div class="card">
+            <div class="card-body">
+                @category.Name <br />
+                @category.Id
+            </div>
+        </div>
+        <br />
+    }
+}
+else
+{
+    <div class="card">
+        <div class="card-body">
+            <h6 class="card-title">@Response.Error.Title</h6>
+            <p class="card-text">
+                <ul>
+                    @foreach (var detail in Response.Error.Details)
+                    {
+                        <li>@detail</li>
+                    }
+                </ul>
+            </p>
+        </div>
+    </div>
+}
+
+@code
+{
+    public ApiResponse<List<Domain.Entities.Category.Category>> Response { get; set; } = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Response = await mediator.Send(new GetCategoriesQuery());
+    }
+}

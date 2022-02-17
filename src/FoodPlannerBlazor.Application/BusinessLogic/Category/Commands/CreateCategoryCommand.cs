@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FoodPlannerBlazor.Infrastructure.Common;
+using MediatR;
 
 namespace FoodPlannerBlazor.Application.BusinessLogic.Category.Commands
 {
-    class CreateCategoryCommand
-    {
-    }
+    public record CreateCategoryCommand(Domain.Entities.Category.Outgoing.CreateCategory Category) : IRequest<ApiResponse<Domain.Entities.Category.Category>>;
 }

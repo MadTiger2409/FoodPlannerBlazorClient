@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FoodPlannerBlazor.Infrastructure.Common;
+using MediatR;
 
 namespace FoodPlannerBlazor.Application.BusinessLogic.Category.Commands
 {
-    class UpdateCategoryCommand
-    {
-    }
+    public record UpdateCategoryCommand(int Id, Domain.Entities.Category.Outgoing.UpdateCategory Category) : IRequest<ApiResponse<Domain.Entities.Category.Category>>;
 }

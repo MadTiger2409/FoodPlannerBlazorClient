@@ -6,6 +6,6 @@ namespace FoodPlannerBlazor.Infrastructure.Common
     {
         public bool Success { get; set; }
         public TEntityBasedResponse Value { get; set; }
-        public RequestError Error { get; set; }
+        public RequestError Error { get; set; } = new();
     }
 }

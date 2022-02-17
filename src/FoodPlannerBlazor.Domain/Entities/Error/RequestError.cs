@@ -2,5 +2,9 @@
 
 namespace FoodPlannerBlazor.Domain.Entities.Error
 {
-    public record RequestError(string Title, List<string> Details);
+    public class RequestError
+    {
+        public string Title { get; set; }
+        public List<string> Details { get; set; } = new();
+    }
 }

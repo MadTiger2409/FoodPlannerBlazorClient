@@ -7,6 +7,6 @@ namespace FoodPlannerBlazor.Domain.Entities.PlannedMeal
     {
         public byte OrdinalNumber { get; set; }
         public DateTime ScheduledFor { get; set; }
-        public Meal.Meal Meal { get; set; }
+        public Meal.Meal Meal { get; set; } = new();
     }
 }

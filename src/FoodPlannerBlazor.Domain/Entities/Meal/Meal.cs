@@ -6,6 +6,6 @@ namespace FoodPlannerBlazor.Domain.Entities.Meal
 {
     public class Meal : NamedEntity
     {
-        public List<IngredientForMeal> Ingredients { get; set; }
+        public List<IngredientForMeal> Ingredients { get; set; } = new();
     }
 }

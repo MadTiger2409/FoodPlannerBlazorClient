@@ -21,7 +21,11 @@ namespace FoodPlannerBlazor.Infrastructure.Extensions
                     return new ApiResponse<TResponse>
                     {
                         Success = false,
-                        Error = new RequestError(response.StatusCode.ToString(), new() { "Something went wrong. Try again later." })
+                        Error = new RequestError
+                        {
+                            Title = response.StatusCode.ToString(),
+                            Details = new() { "Something went wrong. Try again later." }
+                        }
                     };
                 }
 
@@ -32,7 +36,11 @@ namespace FoodPlannerBlazor.Infrastructure.Extensions
                 return new ApiResponse<TResponse>
                 {
                     Success = false,
-                    Error = new RequestError("Unknown error", new() { "Something went wrong. Try again later." })
+                    Error = new RequestError
+                    {
+                        Title = "Unknown error",
+                        Details = new() { "Something went wrong. Try again later." }
+                    }
                 };
             }
         }
@@ -51,7 +59,11 @@ namespace FoodPlannerBlazor.Infrastructure.Extensions
                     return new ApiResponse<TResponse>
                     {
                         Success = false,
-                        Error = new RequestError(response.StatusCode.ToString(), new() { "Something went wrong. Try again later." })
+                        Error = new RequestError
+                        {
+                            Title = response.StatusCode.ToString(),
+                            Details = new() { "Something went wrong. Try again later." }
+                        }
                     };
                 }
 
@@ -62,7 +74,11 @@ namespace FoodPlannerBlazor.Infrastructure.Extensions
                 return new ApiResponse<TResponse>
                 {
                     Success = false,
-                    Error = new RequestError("Unknown error", new() { "Something went wrong. Try again later." })
+                    Error = new RequestError
+                    {
+                        Title = "Unknown error",
+                        Details = new() { "Something went wrong. Try again later." }
+                    }
                 };
             }
         }
@@ -77,7 +93,17 @@ namespace FoodPlannerBlazor.Infrastructure.Extensions
                 var responseAsString = await response.Content.ReadAsStringAsync();
 
                 if (string.IsNullOrWhiteSpace(responseAsString))
-                    return new ApiResponse<TResponse> { Success = false, Error = new RequestError(response.StatusCode.ToString(), new()) };
+                {
+                    return new ApiResponse<TResponse>
+                    {
+                        Success = false,
+                        Error = new RequestError
+                        {
+                            Title = response.StatusCode.ToString(),
+                            Details = new() { "Something went wrong. Try again later." }
+                        }
+                    };
+                }
 
                 return JsonConvert.DeserializeObject<ApiResponse<TResponse>>(responseAsString);
             }
@@ -86,7 +112,11 @@ namespace FoodPlannerBlazor.Infrastructure.Extensions
                 return new ApiResponse<TResponse>
                 {
                     Success = false,
-                    Error = new RequestError("Unknown error", new() { "Something went wrong. Try again later." })
+                    Error = new RequestError
+                    {
+                        Title = "Unknown error",
+                        Details = new() { "Something went wrong. Try again later." }
+                    }
                 };
             }
         }

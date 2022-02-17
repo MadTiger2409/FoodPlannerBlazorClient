@@ -9,6 +9,6 @@ namespace FoodPlannerBlazor.Domain.Entities.Ingredient
 
         public int UnitId { get; set; }
         public int ProductId { get; set; }
-        public MealShort Meal { get; set; }
+        public MealShort Meal { get; set; } = new();
     }
 }

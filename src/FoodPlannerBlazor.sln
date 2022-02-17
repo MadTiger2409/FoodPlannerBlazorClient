@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodPlannerBlazor", "FoodPlannerBlazor\FoodPlannerBlazor.csproj", "{27F27D41-B249-4C00-8FDB-95584A217D96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodPlannerBlazor.Domain", "FoodPlannerBlazor.Domain\FoodPlannerBlazor.Domain.csproj", "{50CCCB19-0715-469C-83A5-D91DC27EB5D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodPlannerBlazor.Domain", "FoodPlannerBlazor.Domain\FoodPlannerBlazor.Domain.csproj", "{50CCCB19-0715-469C-83A5-D91DC27EB5D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodPlannerBlazor.Infrastructure", "FoodPlannerBlazor.Infrastructure\FoodPlannerBlazor.Infrastructure.csproj", "{2D2C35FC-8BA3-4A5B-98D4-434209C5844F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodPlannerBlazor.Infrastructure", "FoodPlannerBlazor.Infrastructure\FoodPlannerBlazor.Infrastructure.csproj", "{2D2C35FC-8BA3-4A5B-98D4-434209C5844F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodPlannerBlazor.Application", "FoodPlannerBlazor.Application\FoodPlannerBlazor.Application.csproj", "{C01BD245-4C18-45BF-A292-1658575877A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodPlannerBlazor.Application", "FoodPlannerBlazor.Application\FoodPlannerBlazor.Application.csproj", "{C01BD245-4C18-45BF-A292-1658575877A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodPlannerBlazor.Debug", "FoodPlannerBlazor.Debug\FoodPlannerBlazor.Debug.csproj", "{B933E4EA-642B-4337-8009-CF7322E0E3BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{C01BD245-4C18-45BF-A292-1658575877A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C01BD245-4C18-45BF-A292-1658575877A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C01BD245-4C18-45BF-A292-1658575877A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B933E4EA-642B-4337-8009-CF7322E0E3BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B933E4EA-642B-4337-8009-CF7322E0E3BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B933E4EA-642B-4337-8009-CF7322E0E3BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B933E4EA-642B-4337-8009-CF7322E0E3BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
