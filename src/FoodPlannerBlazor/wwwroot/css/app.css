@@ -30,6 +30,11 @@ a, .btn-link {
     color: red;
 }
 
+/* Bootstrap components global options*/
+.accordion-button:focus {
+    box-shadow: none;
+}
+
 #blazor-error-ui {
     background: lightyellow;
     bottom: 0;

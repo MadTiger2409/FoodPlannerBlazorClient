@@ -2,22 +2,31 @@
 using FoodPlannerBlazor.Domain.Entities.PlannedMeal;
 using FoodPlannerBlazor.Infrastructure.Common;
 using MediatR;
-using MvvmBlazor.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Threading.Tasks;
 
 namespace FoodPlannerBlazor.ViewModels
 {
-    public class PlannedMealsListComponentViewModel : ViewModelBase
+    public class PlannedMealsListComponentViewModel : INotifyPropertyChanged
     {
         private readonly ISender _mediator;
         private ApiResponse<List<PlannedMeal>> _response = new();
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public ApiResponse<List<PlannedMeal>> Response
         {
             get => _response;
-            set => Set(ref _response, value, nameof(Response));
+            set
+            {
+                if (value == _response)
+                    return;
+
+                _response = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Response)));
+            }
         }
 
         public PlannedMealsListComponentViewModel(ISender mediator) => _mediator = mediator;

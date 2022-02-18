@@ -1,4 +1,3 @@
 ﻿@page "/"
-@inject ISender mediator
 
-<PlannedMealsListComponent From="@DateTime.UtcNow.Date.AddDays(2)" />*@
+<PlannedMealsListComponent From="DateTime.UtcNow.Date.AddDays(2)" To="DateTime.UtcNow.Date.AddDays(4)" />
