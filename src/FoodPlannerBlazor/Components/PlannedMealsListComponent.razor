@@ -1,4 +1,6 @@
 ﻿@page "/plannedMeals"
+@* Fix it to use OnParametersSet and QueryHelpers *@
+@page "/plannedMeals?from={From:datetime}&to={To:datetime}"
 
 <div class="card">
     @if (ViewModel.Response.Success == false)
@@ -25,7 +27,14 @@
     else
     {
         <div class="card-body">
-            <h5 class="card-title">Meals planned from @From.Date.ToString("yyyy-MM-dd") to @To.Date.ToString("yyyy-MM-dd")</h5>
+            @if ((To.Date - From.Date).TotalDays == 0)
+            {
+                <h5 class="card-title">Meals planned for today (@From.Date.ToString("yyyy-MM-dd"))</h5>
+            }
+            else
+            {
+                <h5 class="card-title">Meals planned from @From.Date.ToString("yyyy-MM-dd") to @To.Date.ToString("yyyy-MM-dd")</h5>
+            }
 
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
