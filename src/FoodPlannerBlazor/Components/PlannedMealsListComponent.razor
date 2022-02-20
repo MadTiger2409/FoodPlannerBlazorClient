@@ -1,41 +1,58 @@
 ﻿@page "/plannedMeals"
-@* Fix it to use OnParametersSet and QueryHelpers *@
-@page "/plannedMeals?from={From:datetime}&to={To:datetime}"
+
+@if (IsStatic == false)
+{
+    <EditForm Model="formModel" OnSubmit="HandleOnSybmitAsync">
+        <div class="card">
+            <div class="container">
+                <div class="row row-first">
+                    <div class="col-sm mb-3">
+                        <label for="fromDate" class="form-label">Start date</label>
+                        <InputDate id="fromDate" class="form-control" @bind-Value="formModel.From" />
+                    </div>
+                    <div class="col-sm mb-3">
+                        <label for="toDate" class="form-label">End date</label>
+                        <InputDate id="toDate" class="form-control" @bind-Value="formModel.To" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm mb-3">
+                        <button class="btn btn-success">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </EditForm>
+    <br />
+}
 
 <div class="card">
-    @if (ViewModel.Response.Success == false)
+    @if ((To.Date - From.Date).TotalDays == 0)
     {
-        <h5 class="card-header">@ViewModel.Response.Error.Title</h5>
-        <div class="card-body">
-            <p class="card-text">
-                <ul>
-                    @foreach (var detail in ViewModel.Response.Error.Details)
-                    {
-                        <li>@detail</li>
-                    }
-                </ul>
-            </p>
-        </div>
-    }
-    else if (ViewModel.Response.Success == true && ViewModel.Response.Value.Count == 0)
-    {
-        <h5 class="card-header">No data</h5>
-        <div class="card-body">
-            <h6 class="card-title">There is no data for selected period</h6>
-        </div>
+        <h5 class="card-header">Meals planned for @From.Date.ToString("dd.MM.yyyy")</h5>
     }
     else
     {
-        <div class="card-body">
-            @if ((To.Date - From.Date).TotalDays == 0)
-            {
-                <h5 class="card-title">Meals planned for today (@From.Date.ToString("yyyy-MM-dd"))</h5>
-            }
-            else
-            {
-                <h5 class="card-title">Meals planned from @From.Date.ToString("yyyy-MM-dd") to @To.Date.ToString("yyyy-MM-dd")</h5>
-            }
+        <h5 class="card-header">Meals planned from @From.Date.ToString("dd.MM.yyyy") to @To.Date.ToString("dd.MM.yyyy")</h5>
+    }
 
+    <div class="card-body">
+        @if (ViewModel.Response.Success == false)
+        {
+            <h6 class="card-title">@ViewModel.Response.Error.Title</h6>
+            <ul>
+                @foreach (var detail in ViewModel.Response.Error.Details)
+                {
+                    <li>@detail</li>
+                }
+            </ul>
+        }
+        else if (ViewModel.Response.Success == true && ViewModel.Response.Value.Count == 0)
+        {
+            <h6 class="card-title">There is no data for selected period</h6>
+        }
+        else
+        {
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="heading0">
@@ -79,6 +96,6 @@
                     }
                 }
             </div>
-        </div>
-    }
+        }
+    </div>
 </div>

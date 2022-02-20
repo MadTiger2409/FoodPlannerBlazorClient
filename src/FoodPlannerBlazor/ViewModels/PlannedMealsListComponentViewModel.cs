@@ -4,29 +4,19 @@ using FoodPlannerBlazor.Infrastructure.Common;
 using MediatR;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Threading.Tasks;
 
 namespace FoodPlannerBlazor.ViewModels
 {
-    public class PlannedMealsListComponentViewModel : INotifyPropertyChanged
+    public class PlannedMealsListComponentViewModel : BaseViewModel
     {
         private readonly ISender _mediator;
         private ApiResponse<List<PlannedMeal>> _response = new();
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public ApiResponse<List<PlannedMeal>> Response
         {
             get => _response;
-            set
-            {
-                if (value == _response)
-                    return;
-
-                _response = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Response)));
-            }
+            set => SetValue(ref _response, value);
         }
 
         public PlannedMealsListComponentViewModel(ISender mediator) => _mediator = mediator;
