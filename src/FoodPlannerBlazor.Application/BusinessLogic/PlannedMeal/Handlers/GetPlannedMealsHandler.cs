@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 
 namespace FoodPlannerBlazor.Application.BusinessLogic.PlannedMeal.Handlers
 {
-    public class GetPlannedMealsHandler : IRequestHandler<GetPlannedMealsQuery, ApiResponse<List<Domain.Entities.PlannedMeal.PlannedMeal>>>
+    public class GetPlannedMealsHandler : IRequestHandler<GetPlannedMealsQuery, ApiResponse<List<Domain.Entities.PlannedMeal.PlannedMealsWithGrouping>>>
     {
         private readonly IHttpClientFactory _clientFactory;
 
         public GetPlannedMealsHandler(IHttpClientFactory clientFactory) => _clientFactory = clientFactory;
 
-        public async Task<ApiResponse<List<Domain.Entities.PlannedMeal.PlannedMeal>>> Handle(GetPlannedMealsQuery request, CancellationToken cancellationToken)
+        public async Task<ApiResponse<List<Domain.Entities.PlannedMeal.PlannedMealsWithGrouping>>> Handle(GetPlannedMealsQuery request, CancellationToken cancellationToken)
         {
             var httpClient = _clientFactory.CreateClient("plannedMeals");
 
@@ -31,7 +31,7 @@ namespace FoodPlannerBlazor.Application.BusinessLogic.PlannedMeal.Handlers
             };
             var partialQuery = QueryHelpers.AddQueryString(string.Empty, queryParams);
 
-            return await httpClient.GetWithDeserializationAsync<List<Domain.Entities.PlannedMeal.PlannedMeal>>(partialQuery);
+            return await httpClient.GetWithDeserializationAsync<List<Domain.Entities.PlannedMeal.PlannedMealsWithGrouping>>(partialQuery);
         }
     }
 }

@@ -17,10 +17,10 @@ namespace FoodPlannerBlazor.Components
         public NavigationManager NavigationManager { get; set; }
 
         [Parameter]
-        public DateTime From { get; set; } = DateTime.UtcNow.Date;
+        public DateTime From { get; set; } = DateTime.Now.Date;
 
         [Parameter]
-        public DateTime To { get; set; } = DateTime.UtcNow.Date;
+        public DateTime To { get; set; } = DateTime.Now.Date;
 
         [Parameter]
         public bool IsStatic { get; set; } = false;

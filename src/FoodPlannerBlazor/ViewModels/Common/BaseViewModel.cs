@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace FoodPlannerBlazor.ViewModels
+namespace FoodPlannerBlazor.ViewModels.Common
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
