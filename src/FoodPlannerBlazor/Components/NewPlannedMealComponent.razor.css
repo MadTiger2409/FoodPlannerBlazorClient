@@ -5,3 +5,7 @@
 .details-fail {
     color: #cc0000;
 }
+
+.card-header {
+    padding-bottom: 0rem;
+}
