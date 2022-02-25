@@ -3,6 +3,8 @@ using FoodPlannerBlazor.Infrastructure.Common;
 using Newtonsoft.Json;
 using System;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace FoodPlannerBlazor.Infrastructure.Extensions
@@ -49,9 +51,10 @@ namespace FoodPlannerBlazor.Infrastructure.Extensions
         {
             try
             {
-                var objectToSendJson = JsonConvert.SerializeObject(objectToSend);
+                HttpContent httpContent = new StringContent(JsonConvert.SerializeObject(objectToSend), Encoding.UTF8);
+                httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-                var response = await client.PostAsync(uri, new StringContent(objectToSendJson));
+                var response = await client.PostAsync(uri, httpContent);
                 var responseAsString = await response.Content.ReadAsStringAsync();
 
                 if (string.IsNullOrWhiteSpace(responseAsString))
@@ -87,9 +90,10 @@ namespace FoodPlannerBlazor.Infrastructure.Extensions
         {
             try
             {
-                var objectToSendJson = JsonConvert.SerializeObject(objectToSend);
+                HttpContent httpContent = new StringContent(JsonConvert.SerializeObject(objectToSend), Encoding.UTF8);
+                httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-                var response = await client.PutAsync(uri, new StringContent(objectToSendJson));
+                var response = await client.PutAsync(uri, httpContent);
                 var responseAsString = await response.Content.ReadAsStringAsync();
 
                 if (string.IsNullOrWhiteSpace(responseAsString))

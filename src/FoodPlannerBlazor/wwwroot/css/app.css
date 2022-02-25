@@ -4,6 +4,10 @@ html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+ul li {
+    list-style-type: none;
+}
+
 a, .btn-link {
     color: #0366d6;
 }
@@ -26,10 +30,6 @@ a, .btn-link {
     outline: 1px solid red;
 }
 
-.validation-message {
-    color: red;
-}
-
 /* Bootstrap components global options*/
 .accordion-button:focus {
     box-shadow: none;
@@ -39,8 +39,13 @@ a, .btn-link {
     color: #368614;
     background-color: #c1d97e;
 }
-/* End of the section*/
 
+.validation-message {
+    text-align: center;
+    color: red;
+}
+
+/* End of the section*/
 #blazor-error-ui {
     background: lightyellow;
     bottom: 0;

@@ -2,7 +2,8 @@
 
 @if (IsStatic == false)
 {
-    <EditForm Model="formModel" OnSubmit="HandleOnSybmitAsync">
+    <EditForm Model="formModel" OnValidSubmit="OnValidSubmitAsync">
+        <FluentValidationValidator />
         <div class="card">
             <div class="container">
                 <div class="row row-first">
@@ -15,10 +16,13 @@
                         <InputDate id="toDate" class="form-control" @bind-Value="formModel.To" />
                     </div>
                 </div>
-                <div class="row">
+                <div class="row row-cols-1">
                     <div class="col-sm mb-3">
-                        <button class="btn btn-success">Send</button>
+                        <button type="submit" class="btn btn-success">Send</button>
                     </div>
+                </div>
+                <div class="row row-cols-1">
+                    <ValidationSummary />
                 </div>
             </div>
         </div>

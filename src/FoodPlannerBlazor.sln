@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodPlannerBlazor.Infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodPlannerBlazor.Application", "FoodPlannerBlazor.Application\FoodPlannerBlazor.Application.csproj", "{C01BD245-4C18-45BF-A292-1658575877A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodPlannerBlazor.Debug", "FoodPlannerBlazor.Debug\FoodPlannerBlazor.Debug.csproj", "{B933E4EA-642B-4337-8009-CF7322E0E3BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodPlannerBlazor.Debug", "FoodPlannerBlazor.Debug\FoodPlannerBlazor.Debug.csproj", "{B933E4EA-642B-4337-8009-CF7322E0E3BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -27,24 +27,12 @@ namespace FoodPlannerBlazor.Components
 
         private GetPlannedMealsFormModel formModel = new();
 
-        private async Task HandleOnSybmitAsync()
+        private async Task OnValidSubmitAsync()
         {
             From = formModel.From;
             To = formModel.To;
 
             await ViewModel.GetPlannedMealsFromApiAsync(formModel.From, formModel.To);
-        }
-
-        protected override async Task OnInitializedAsync()
-        {
-            ViewModel.PropertyChanged += async (sender, e) =>
-            {
-                await InvokeAsync(() =>
-                {
-                    StateHasChanged();
-                });
-            };
-            await base.OnInitializedAsync();
         }
 
         protected override async Task OnParametersSetAsync()
@@ -66,6 +54,18 @@ namespace FoodPlannerBlazor.Components
             formModel.To = To;
 
             await ViewModel.GetPlannedMealsFromApiAsync(From, To);
+        }
+
+        protected override async Task OnInitializedAsync()
+        {
+            ViewModel.PropertyChanged += async (sender, e) =>
+            {
+                await InvokeAsync(() =>
+                {
+                    StateHasChanged();
+                });
+            };
+            await base.OnInitializedAsync();
         }
 
         private async void OnPropertyChangedHandler(object sender, PropertyChangedEventArgs e)

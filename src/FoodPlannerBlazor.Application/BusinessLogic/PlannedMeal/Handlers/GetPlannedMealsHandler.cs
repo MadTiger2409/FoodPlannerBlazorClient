@@ -3,7 +3,6 @@ using FoodPlannerBlazor.Infrastructure.Common;
 using FoodPlannerBlazor.Infrastructure.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.WebUtilities;
-using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
@@ -20,9 +19,6 @@ namespace FoodPlannerBlazor.Application.BusinessLogic.PlannedMeal.Handlers
         public async Task<ApiResponse<List<Domain.Entities.PlannedMeal.PlannedMealsWithGrouping>>> Handle(GetPlannedMealsQuery request, CancellationToken cancellationToken)
         {
             var httpClient = _clientFactory.CreateClient("plannedMeals");
-
-            if ((request.To.Date - request.From.Date).TotalDays > 31)
-                request = request with { From = DateTime.UtcNow, To = DateTime.UtcNow };
 
             var queryParams = new Dictionary<string, string>
             {

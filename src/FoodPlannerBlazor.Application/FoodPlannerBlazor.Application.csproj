@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BusinessLogic\PlannedMeal\Commands\" />
+    <Folder Include="BusinessLogic\Meals\Commands\" />
   </ItemGroup>
 
 </Project>

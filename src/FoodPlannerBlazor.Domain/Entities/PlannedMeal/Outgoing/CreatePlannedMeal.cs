@@ -2,5 +2,5 @@
 
 namespace FoodPlannerBlazor.Domain.Entities.PlannedMeal.Outgoing
 {
-    public record CreatePlannedMeal(byte OrdinalNumber, DateTime ScheduledFor, int MealId);
+    public record CreatePlannedMeal(int OrdinalNumber, DateTime ScheduledFor, int MealId);
 }

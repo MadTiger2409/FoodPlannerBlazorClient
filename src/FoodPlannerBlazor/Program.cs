@@ -1,3 +1,4 @@
+using FluentValidation;
 using FoodPlannerBlazor.Application;
 using FoodPlannerBlazor.Infrastructure;
 using FoodPlannerBlazor.ViewModels;
@@ -19,7 +20,11 @@ namespace FoodPlannerBlazor
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             builder.Services.AddInfrastructure();
             builder.Services.AddApplication();
+
+            builder.Services.AddValidatorsFromAssemblyContaining<Program>();
+
             builder.Services.AddTransient<PlannedMealsListComponentViewModel>();
+            builder.Services.AddTransient<NewPlannedMealComponentViewModel>();
 
             await builder.Build().RunAsync();
         }
