@@ -1,4 +1,5 @@
 ﻿using FoodPlannerBlazor.Application.BusinessLogic.Category.Commands;
+using FoodPlannerBlazor.Domain.Entities.Category.Outgoing;
 using FoodPlannerBlazor.Infrastructure.Common;
 using FoodPlannerBlazor.Infrastructure.Extensions;
 using MediatR;
@@ -17,8 +18,9 @@ namespace FoodPlannerBlazor.Application.BusinessLogic.Category.Handlers
         public async Task<ApiResponse<Domain.Entities.Category.Category>> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
         {
             var httpClient = _clientFactory.CreateClient("categories");
+            var outgoingObject = new CreateCategory(request.Name);
 
-            return await httpClient.PostWithDeserializationAsync<Domain.Entities.Category.Category>(request.Category);
+            return await httpClient.PostWithDeserializationAsync<Domain.Entities.Category.Category>(outgoingObject);
         }
     }
 }

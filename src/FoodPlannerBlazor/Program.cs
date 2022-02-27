@@ -26,6 +26,7 @@ namespace FoodPlannerBlazor
             builder.Services.AddTransient<PlannedMealsListComponentViewModel>();
             builder.Services.AddTransient<NewPlannedMealComponentViewModel>();
             builder.Services.AddTransient<CategoriesListComponentViewModel>();
+            builder.Services.AddTransient<NewCategoryComponentViewModel>();
 
             await builder.Build().RunAsync();
         }
