@@ -37,7 +37,7 @@ a, .btn-link {
 
 .accordion-button:not(.collapsed) {
     color: #368614;
-    background-color: #c1d97e;
+    background-color: #dce9b5;
 }
 
 .validation-message {
@@ -45,7 +45,16 @@ a, .btn-link {
     color: red;
 }
 
+.row-first {
+    padding-top: 1%;
+}
+
+.card {
+    max-width: 900px;
+    margin: 0 auto;
+}
 /* End of the section*/
+
 #blazor-error-ui {
     background: lightyellow;
     bottom: 0;

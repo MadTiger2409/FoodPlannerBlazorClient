@@ -21,6 +21,6 @@ namespace FoodPlannerBlazor.ViewModels
 
         public CategoriesListComponentViewModel(ISender mediator) => _mediator = mediator;
 
-        public async Task GetPlannedMealsFromApiAsync(string name) => Response = await _mediator.Send(new GetCategoriesQuery(name));
+        public async Task GetCategoriesFromApiAsync(string name) => Response = await _mediator.Send(new GetCategoriesQuery(name));
     }
 }
