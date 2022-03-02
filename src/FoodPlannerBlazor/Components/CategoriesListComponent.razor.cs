@@ -1,18 +1,15 @@
-﻿using FoodPlannerBlazor.EditFormModels;
+﻿using FoodPlannerBlazor.Components.Common;
+using FoodPlannerBlazor.EditFormModels;
 using FoodPlannerBlazor.ViewModels;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.WebUtilities;
 using System;
-using System.ComponentModel;
 using System.Threading.Tasks;
 
 namespace FoodPlannerBlazor.Components
 {
-    public partial class CategoriesListComponent : ComponentBase
+    public partial class CategoriesListComponent : BaseComponent<CategoriesListComponentViewModel>
     {
-        [Inject]
-        public CategoriesListComponentViewModel ViewModel { get; set; }
-
         [Inject]
         public NavigationManager NavigationManager { get; set; }
 
@@ -41,27 +38,5 @@ namespace FoodPlannerBlazor.Components
 
             await ViewModel.GetCategoriesFromApiAsync(Name);
         }
-
-        protected override async Task OnInitializedAsync()
-        {
-            ViewModel.PropertyChanged += async (sender, e) =>
-            {
-                await InvokeAsync(() =>
-                {
-                    StateHasChanged();
-                });
-            };
-            await base.OnInitializedAsync();
-        }
-
-        private async void OnPropertyChangedHandler(object sender, PropertyChangedEventArgs e)
-        {
-            await InvokeAsync(() =>
-            {
-                StateHasChanged();
-            });
-        }
-
-        public void Dispose() => ViewModel.PropertyChanged -= OnPropertyChangedHandler;
     }
 }

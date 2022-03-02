@@ -1,4 +1,6 @@
-﻿@page "/categories"
+﻿@inherits BaseComponent<CategoriesListComponentViewModel>
+
+@page "/categories"
 
 <EditForm Model="formModel" OnValidSubmit="OnValidSubmitAsync">
     <FluentValidationValidator />

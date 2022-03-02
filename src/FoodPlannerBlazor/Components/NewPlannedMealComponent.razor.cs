@@ -1,19 +1,15 @@
-﻿using FoodPlannerBlazor.Domain.Entities.Meal;
+﻿using FoodPlannerBlazor.Components.Common;
+using FoodPlannerBlazor.Domain.Entities.Meal;
 using FoodPlannerBlazor.EditFormModels;
 using FoodPlannerBlazor.ViewModels;
-using Microsoft.AspNetCore.Components;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace FoodPlannerBlazor.Components
 {
-    public partial class NewPlannedMealComponent : ComponentBase
+    public partial class NewPlannedMealComponent : BaseComponent<NewPlannedMealComponentViewModel>
     {
-        [Inject]
-        public NewPlannedMealComponentViewModel ViewModel { get; set; }
-
         private CreatePlannedMealFormModel formModel = new();
 
         private bool showDetailsInformation = false;
@@ -31,28 +27,11 @@ namespace FoodPlannerBlazor.Components
             showDetailsInformation = true;
         }
 
-        public void Dispose() => ViewModel.PropertyChanged -= OnPropertyChangedHandler;
-
         protected override async Task OnInitializedAsync()
         {
-            ViewModel.PropertyChanged += async (sender, e) =>
-            {
-                await InvokeAsync(() =>
-                {
-                    StateHasChanged();
-                });
-            };
             await base.OnInitializedAsync();
 
             await ViewModel.InitializeMealsListAsync();
-        }
-
-        private async void OnPropertyChangedHandler(object sender, PropertyChangedEventArgs e)
-        {
-            await InvokeAsync(() =>
-            {
-                StateHasChanged();
-            });
         }
     }
 }
