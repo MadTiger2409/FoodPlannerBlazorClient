@@ -3,17 +3,17 @@ using FoodPlannerBlazor.EditFormModels;
 using FoodPlannerBlazor.ViewModels;
 using System.Threading.Tasks;
 
-namespace FoodPlannerBlazor.Components
+namespace FoodPlannerBlazor.Components.Unit
 {
-    public partial class NewCategoryComponent : BaseComponent<NewCategoryComponentViewModel>
+    public partial class NewUnitComponent : BaseComponent<NewUnitComponentViewModel>
     {
-        private CreateCategoryFormModel formModel = new();
+        private CreateUnitFormModel formModel = new();
 
         private bool showDetailsInformation = false;
 
         private async Task OnValidSubmitAsync()
         {
-            await ViewModel.AddCategoryAsync(formModel);
+            await ViewModel.AddUnitAsync(formModel);
             showDetailsInformation = true;
         }
     }

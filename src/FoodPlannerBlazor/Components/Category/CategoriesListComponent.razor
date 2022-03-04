@@ -1,0 +1,60 @@
+﻿@inherits BaseComponent<CategoriesListComponentViewModel>
+
+@page "/categories"
+
+<EditForm Model="formModel" OnValidSubmit="OnValidSubmitAsync">
+    <FluentValidationValidator />
+    <div class="card">
+        <div class="container">
+            <div class="row row-first">
+                <div class="col-sm mb-3">
+                    <label for="nameInputText" class="form-label">Name (optional)</label>
+                    <InputText id="nameInputText" class="form-control" placeholder="Search by name..." @bind-Value="formModel.Name" />
+                </div>
+            </div>
+            <div class="row row-cols-1">
+                <div class="col-sm mb-3">
+                    <button type="submit" class="btn btn-success">Send</button>
+                </div>
+            </div>
+            <div class="row row-cols-1">
+                <ValidationSummary />
+            </div>
+        </div>
+    </div>
+</EditForm>
+<br />
+
+<div class="card">
+    <h5 class="card-header">Categories</h5>
+    <div class="card-body">
+        @if (ViewModel.Response.Success == false)
+        {
+            <h6 class="card-title">@ViewModel.Response.Error.Title</h6>
+            <ul>
+                @foreach (var detail in ViewModel.Response.Error.Details)
+                {
+                    <li>@detail</li>
+                }
+            </ul>
+        }
+        else if (ViewModel.Response.Success == true && ViewModel.Response.Value.Count == 0)
+        {
+            <h6 class="card-title">There is no data for given criteria</h6>
+        }
+        else
+        {
+            <ul class="list-group">
+                @for (int i = 1; i <= ViewModel.Response.Value.Count; i++)
+                {
+                    if (i % 2 == 0)
+                    {
+                        <li class="list-group-item">@ViewModel.Response.Value[i - 1].Name</li>
+                        continue;
+                    }
+                    <li class="list-group-item list-group-item-lightGreen">@ViewModel.Response.Value[i - 1].Name</li>
+                }
+            </ul>
+        }
+    </div>
+</div>

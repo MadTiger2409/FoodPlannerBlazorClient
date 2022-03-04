@@ -1,0 +1,52 @@
+﻿@inherits BaseComponent<NewUnitComponentViewModel>
+
+@page "/units/new"
+
+@if (showDetailsInformation)
+{
+    <div class="card">
+        @if (ViewModel.Response.Success)
+        {
+            <div class="card-header header-with-button">
+                <h5 class="float-start">Success</h5>
+                <button class="btn btn-close float-end" @onclick="() => { showDetailsInformation = false; }"></button>
+            </div>
+            <div class="card-body">
+                <p class="details-success">Unit added successfully</p>
+            </div>
+        }
+        else
+        {
+            <div class="card-header header-with-button">
+                <h5 class="float-start">@ViewModel.Response.Error.Title</h5>
+                <button class="btn btn-close float-end" @onclick="() => { showDetailsInformation = false; }"></button>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    @foreach (var detail in ViewModel.Response.Error.Details)
+                    {
+                        <li class="details-fail">@detail</li>
+                    }
+                </ul>
+            </div>
+        }
+    </div>
+    <br />
+}
+
+<div class="card">
+    <h5 class="card-header">Add unit</h5>
+    <div class="card-body">
+        <EditForm Model="formModel" OnValidSubmit="OnValidSubmitAsync">
+            <FluentValidationValidator />
+
+            <div class="mb-3">
+                <label for="categoryNameText" class="form-label">Name</label>
+                <InputText id="categoryNameText" class="form-control" placeholder="Provide the name..." @bind-Value="formModel.Name" />
+                <ValidationMessage For="() => formModel.Name" />
+            </div>
+
+            <button type="submit" class="btn btn-success">Send</button>
+        </EditForm>
+    </div>
+</div>

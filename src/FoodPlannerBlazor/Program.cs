@@ -20,13 +20,14 @@ namespace FoodPlannerBlazor
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             builder.Services.AddInfrastructure();
             builder.Services.AddApplication();
-
             builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
             builder.Services.AddTransient<PlannedMealsListComponentViewModel>();
             builder.Services.AddTransient<NewPlannedMealComponentViewModel>();
             builder.Services.AddTransient<CategoriesListComponentViewModel>();
             builder.Services.AddTransient<NewCategoryComponentViewModel>();
+            builder.Services.AddTransient<UnitsListComponentViewModel>();
+            builder.Services.AddTransient<NewUnitComponentViewModel>();
 
             await builder.Build().RunAsync();
         }

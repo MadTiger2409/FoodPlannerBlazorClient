@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.WebUtilities;
 using System;
 using System.Threading.Tasks;
 
-namespace FoodPlannerBlazor.Components
+namespace FoodPlannerBlazor.Components.Category
 {
     public partial class CategoriesListComponent : BaseComponent<CategoriesListComponentViewModel>
     {

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FoodPlannerBlazor.Components
+namespace FoodPlannerBlazor.Components.PlannedMeal
 {
     public partial class NewPlannedMealComponent : BaseComponent<NewPlannedMealComponentViewModel>
     {

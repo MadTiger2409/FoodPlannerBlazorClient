@@ -30,7 +30,25 @@ a, .btn-link {
     outline: 1px solid red;
 }
 
-/* Bootstrap components global options*/
+/* Custom */
+.list-group-item-lightGreen {
+    color: #368614;
+    background-color: #dce9b5;
+}
+
+.details-success {
+    color: #23b200;
+}
+
+.details-fail {
+    color: #cc0000;
+}
+
+.header-with-button {
+    padding-bottom: 0rem;
+}
+/* End of the section */
+/* Bootstrap components global options */
 .accordion-button:focus {
     box-shadow: none;
 }
@@ -53,7 +71,7 @@ a, .btn-link {
     max-width: 900px;
     margin: 0 auto;
 }
-/* End of the section*/
+/* End of the section */
 
 #blazor-error-ui {
     background: lightyellow;

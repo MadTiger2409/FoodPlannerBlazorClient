@@ -7,7 +7,7 @@
     <div class="card">
         @if (ViewModel.Response.Success)
         {
-            <div class="card-header">
+            <div class="card-header header-with-button">
                 <h5 class="float-start">Success</h5>
                 <button class="btn btn-close float-end" @onclick="() => { showDetailsInformation = false; }"></button>
             </div>
@@ -17,12 +17,12 @@
         }
         else
         {
-            <div class="card-header">
+            <div class="card-header header-with-button">
                 <h5 class="float-start">@ViewModel.Response.Error.Title</h5>
                 <button class="btn btn-close float-end" @onclick="() => { showDetailsInformation = false; }"></button>
             </div>
             <div class="card-body">
-                <ul>
+                <ul class="list-group">
                     @foreach (var detail in ViewModel.Response.Error.Details)
                     {
                         <li class="details-fail">@detail</li>
@@ -35,6 +35,7 @@
 }
 
 <div class="card">
+    <h5 class="card-header">Plan a meal</h5>
     <div class="card-body">
         <EditForm Model="formModel" OnValidSubmit="OnValidSubmitAsync">
             <FluentValidationValidator />
