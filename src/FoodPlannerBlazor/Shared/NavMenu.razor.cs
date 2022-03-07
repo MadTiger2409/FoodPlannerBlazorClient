@@ -8,6 +8,7 @@ namespace FoodPlannerBlazor.Shared
         private bool plannedMealsSubMenuVisible = false;
         private bool categoriesSubMenuVisible = false;
         private bool unitsSubMenuVisible = false;
+        private bool productsSubMenuVisible = false;
 
         private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
