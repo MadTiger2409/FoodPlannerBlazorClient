@@ -1,4 +1,4 @@
-﻿using FoodPlannerBlazor.Application.BusinessLogic.Meals.Queries;
+﻿using FoodPlannerBlazor.Application.BusinessLogic.Meal.Queries;
 using FoodPlannerBlazor.Application.BusinessLogic.PlannedMeal.Commands;
 using FoodPlannerBlazor.Domain.Entities.Meal;
 using FoodPlannerBlazor.Domain.Entities.PlannedMeal;

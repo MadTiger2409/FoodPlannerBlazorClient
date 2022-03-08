@@ -19,7 +19,7 @@ namespace FoodPlannerBlazor.Application.BusinessLogic.Product.Handlers
         public async Task<ApiResponse<List<Domain.Entities.Product.Product>>> Handle(GetProductsQuery request, CancellationToken cancellationToken)
         {
             string parameters = string.Empty;
-            var httpClient = _clientFactory.CreateClient("categories");
+            var httpClient = _clientFactory.CreateClient("products");
 
             if (!string.IsNullOrWhiteSpace(request.Name))
                 parameters = QueryHelpers.AddQueryString(string.Empty, "name", request.Name);

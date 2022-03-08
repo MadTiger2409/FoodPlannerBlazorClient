@@ -1,11 +1,11 @@
-﻿<div class="top-row ps-4 navbar navbar-dark">
+﻿<div class="top-row ps-4 navbar navbar-expand-md navbar-dark">
     <a class="navbar-brand" href=""><span class="fa-solid fa-burger" aria-hidden="true"></span>Food Planner</a>
-    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleContent" aria-controls="navbarToggleContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 </div>
 
-<div class="@NavMenuCssClass">
+<div class="collapse navbar-collapse" id="navbarToggleContent">
     <ul class="nav flex-column">
         <li class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
@@ -13,10 +13,13 @@
             </NavLink>
         </li>
 
+        <li><hr class="dropdown-divider"></li>
+
         <li class="nav-item px-3 ">
             <NavLink class="nav-link" href="javascript: void(0);" @onclick="() => ToggleSubMenu(ref plannedMealsSubMenuVisible)">
                 <span class="fa-solid fa-calendar" aria-hidden="true"></span> Planned Meals
             </NavLink>
+
             @if (plannedMealsSubMenuVisible)
             {
                 <ul class="nav flex-column">
@@ -35,6 +38,29 @@
         </li>
 
         <li class="nav-item px-3 ">
+            <NavLink class="nav-link" href="javascript: void(0);" @onclick="() => ToggleSubMenu(ref mealsSubMenuVisible)">
+                <span class="fa-solid fa-drumstick-bite" aria-hidden="true"></span> Meals
+            </NavLink>
+            @if (mealsSubMenuVisible)
+            {
+                <ul class="nav flex-column">
+                    <li class="nav-item px-3">
+                        <NavLink class="nav-link" href="meals" Match="NavLinkMatch.All">
+                            <i class="fa-solid fa-list" aria-hidden="true"></i> All
+                        </NavLink>
+                    </li>
+                    <li class="nav-item px-3">
+                        <NavLink class="nav-link" href="meals/new" Match="NavLinkMatch.All">
+                            <span class="fa-solid fa-plus" aria-hidden="true"></span> Add
+                        </NavLink>
+                    </li>
+                </ul>
+            }
+        </li>
+
+        <li><hr class="dropdown-divider"></li>
+
+        <li class="nav-item px-3">
             <NavLink class="nav-link" href="javascript: void(0);" @onclick="() => ToggleSubMenu(ref productsSubMenuVisible)">
                 <span class="fa-solid fa-cart-shopping" aria-hidden="true"></span> Products
             </NavLink>
@@ -55,7 +81,7 @@
             }
         </li>
 
-        <li class="nav-item px-3 ">
+        <li class="nav-item px-3">
             <NavLink class="nav-link" href="javascript: void(0);" @onclick="() => ToggleSubMenu(ref categoriesSubMenuVisible)">
                 <span class="fa-solid fa-clipboard-list" aria-hidden="true"></span> Categories
             </NavLink>
@@ -76,7 +102,7 @@
             }
         </li>
 
-        <li class="nav-item px-3 ">
+        <li class="nav-item px-3">
             <NavLink class="nav-link" href="javascript: void(0);" @onclick="() => ToggleSubMenu(ref unitsSubMenuVisible)">
                 <span class="fa-solid fa-scale-unbalanced" aria-hidden="true"></span> Units
             </NavLink>

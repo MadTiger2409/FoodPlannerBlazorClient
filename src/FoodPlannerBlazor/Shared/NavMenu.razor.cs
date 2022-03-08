@@ -4,15 +4,11 @@ namespace FoodPlannerBlazor.Shared
 {
     public partial class NavMenu : ComponentBase
     {
-        private bool collapseNavMenu = true;
         private bool plannedMealsSubMenuVisible = false;
         private bool categoriesSubMenuVisible = false;
         private bool unitsSubMenuVisible = false;
         private bool productsSubMenuVisible = false;
-
-        private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-        private void ToggleNavMenu() => collapseNavMenu = !collapseNavMenu;
+        private bool mealsSubMenuVisible = false;
 
         private void ToggleSubMenu(ref bool subMenuFlag) => subMenuFlag = !subMenuFlag;
     }
