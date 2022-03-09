@@ -10,6 +10,6 @@ namespace FoodPlannerBlazor.Shared
         private bool productsSubMenuVisible = false;
         private bool mealsSubMenuVisible = false;
 
-        private void ToggleSubMenu(ref bool subMenuFlag) => subMenuFlag = !subMenuFlag;
+        private static void ToggleSubMenu(ref bool subMenuFlag) => subMenuFlag = !subMenuFlag;
     }
 }
