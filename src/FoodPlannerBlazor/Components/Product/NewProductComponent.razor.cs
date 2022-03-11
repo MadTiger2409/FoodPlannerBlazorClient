@@ -15,9 +15,9 @@ namespace FoodPlannerBlazor.Components.Product
 
         private int? ConvertCategory(Domain.Entities.Category.Category category) => category?.Id;
 
-        private Domain.Entities.Category.Category LoadSelectedMeal(int? id) => ViewModel.Categories.FirstOrDefault(x => x.Id == id);
+        private Domain.Entities.Category.Category LoadSelectedCategory(int? id) => ViewModel.Categories.FirstOrDefault(x => x.Id == id);
 
-        private async Task<IEnumerable<Domain.Entities.Category.Category>> SearchMealsAsync(string searchedText)
+        private async Task<IEnumerable<Domain.Entities.Category.Category>> SearchCategoriesAsync(string searchedText)
             => await Task.FromResult(ViewModel.Categories.Where(x => x.Name.ToLower().Contains(searchedText.ToLower())).ToList());
 
         private async Task OnValidSubmitAsync()

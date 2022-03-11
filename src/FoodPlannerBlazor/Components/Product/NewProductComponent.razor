@@ -2,4 +2,73 @@
 
 @page "/products/new"
 
-<h3>NewProductComponent</h3>
+@if (showDetailsInformation)
+{
+    <div class="card">
+        @if (ViewModel.Response.Success)
+        {
+            <div class="card-header header-with-button">
+                <h5 class="float-start">Success</h5>
+                <button class="btn btn-close float-end" @onclick="() => { showDetailsInformation = false; }"></button>
+            </div>
+            <div class="card-body">
+                <p class="details-success">Product added successfully</p>
+            </div>
+        }
+        else
+        {
+            <div class="card-header header-with-button">
+                <h5 class="float-start">@ViewModel.Response.Error.Title</h5>
+                <button class="btn btn-close float-end" @onclick="() => { showDetailsInformation = false; }"></button>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    @foreach (var detail in ViewModel.Response.Error.Details)
+                    {
+                        <li class="details-fail">@detail</li>
+                    }
+                </ul>
+            </div>
+        }
+    </div>
+    <br />
+}
+
+<div class="card">
+    <h5 class="card-header">Add product</h5>
+    <div class="card-body">
+        <EditForm Model="formModel" OnValidSubmit="OnValidSubmitAsync">
+            <FluentValidationValidator />
+
+            <div class="mb-3">
+                <label for="productNameText" class="form-label">Name</label>
+                <InputText id="productNameText" class="form-control" placeholder="Provide the name..." @bind-Value="formModel.Name" />
+                <ValidationMessage For="() => formModel.Name" />
+            </div>
+
+            <div class="mb-3">
+                <label for="categorySelector" class="form-label">Category</label>
+                <BlazoredTypeahead id="categorySelector" placeholder="Search by name..."
+                                   SearchMethod="SearchCategoriesAsync"
+                                   ConvertMethod="ConvertCategory"
+                                   EnableDropDown="true"
+                                   MaximumSuggestions="ViewModel.Categories.Count"
+                                   @bind-Value="formModel.CategoryId">
+                    <SelectedTemplate Context="categoryId">
+                        @{
+                            var selectedCategory = LoadSelectedCategory(categoryId);
+
+                            <text>@selectedCategory.Name</text>
+                        }
+                    </SelectedTemplate>
+                    <ResultTemplate Context="meal">
+                        @meal.Name
+                    </ResultTemplate>
+                </BlazoredTypeahead>
+                <ValidationMessage For="() => formModel.CategoryId" />
+            </div>
+
+            <button type="submit" class="btn btn-success">Send</button>
+        </EditForm>
+    </div>
+</div>
