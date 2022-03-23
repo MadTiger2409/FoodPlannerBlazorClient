@@ -1,5 +1,4 @@
 ﻿using FoodPlannerBlazor.Components.Common;
-using FoodPlannerBlazor.Domain.Entities.Meal;
 using FoodPlannerBlazor.EditFormModels;
 using FoodPlannerBlazor.ViewModels;
 using System.Collections.Generic;
@@ -14,11 +13,11 @@ namespace FoodPlannerBlazor.Components.PlannedMeal
 
         private bool showDetailsInformation = false;
 
-        private int? ConvertMeal(Meal meal) => meal?.Id;
+        private int? ConvertMeal(Domain.Entities.Meal.Meal meal) => meal?.Id;
 
-        private Meal LoadSelectedMeal(int? id) => ViewModel.Meals.FirstOrDefault(x => x.Id == id);
+        private Domain.Entities.Meal.Meal LoadSelectedMeal(int? id) => ViewModel.Meals.FirstOrDefault(x => x.Id == id);
 
-        private async Task<IEnumerable<Meal>> SearchMealsAsync(string searchedText)
+        private async Task<IEnumerable<Domain.Entities.Meal.Meal>> SearchMealsAsync(string searchedText)
             => await Task.FromResult(ViewModel.Meals.Where(x => x.Name.ToLower().Contains(searchedText.ToLower())).ToList());
 
         private async Task OnValidSubmitAsync()
