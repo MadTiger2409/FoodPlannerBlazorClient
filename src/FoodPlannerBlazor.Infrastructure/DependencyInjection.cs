@@ -4,7 +4,7 @@ namespace FoodPlannerBlazor.Infrastructure
 {
     public static class DependencyInjection
     {
-        private static readonly string baseApiAddress = "https://192.168.1.108:5001";
+        private static readonly string baseApiAddress = "https://localhost:5001";
 
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
