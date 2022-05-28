@@ -37,13 +37,13 @@
 <div class="card">
     <h5 class="card-header">Add category</h5>
     <div class="card-body">
-        <EditForm Model="formModel" OnValidSubmit="OnValidSubmitAsync">
+        <EditForm Model="_createCategoryModel" OnValidSubmit="OnValidSubmitAsync">
             <FluentValidationValidator />
 
             <div class="mb-3">
                 <label for="categoryNameText" class="form-label">Name</label>
-                <InputText id="categoryNameText" class="form-control" placeholder="Provide the name..." @bind-Value="formModel.Name" />
-                <ValidationMessage For="() => formModel.Name" />
+                <InputText id="categoryNameText" class="form-control" placeholder="Provide the name..." @bind-Value="_createCategoryModel.Name" />
+                <ValidationMessage For="() => _createCategoryModel.Name" />
             </div>
 
             <button type="submit" class="btn btn-success">Send</button>

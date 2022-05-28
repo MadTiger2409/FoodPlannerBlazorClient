@@ -1,5 +1,5 @@
 ﻿using FoodPlannerBlazor.Components.Common;
-using FoodPlannerBlazor.EditFormModels;
+using FoodPlannerBlazor.Domain.Entities.Unit.Outgoing;
 using FoodPlannerBlazor.ViewModels;
 using System.Threading.Tasks;
 
@@ -7,13 +7,13 @@ namespace FoodPlannerBlazor.Components.Unit
 {
     public partial class NewUnitComponent : BaseComponent<NewUnitComponentViewModel>
     {
-        private CreateUnitFormModel formModel = new();
+        private CreateUnit _createUnitModel = new();
 
         private bool showDetailsInformation = false;
 
         private async Task OnValidSubmitAsync()
         {
-            await ViewModel.AddUnitAsync(formModel);
+            await ViewModel.AddUnitAsync(_createUnitModel);
             showDetailsInformation = true;
         }
     }

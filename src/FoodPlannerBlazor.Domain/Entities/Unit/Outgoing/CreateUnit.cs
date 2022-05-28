@@ -1,4 +1,8 @@
-﻿namespace FoodPlannerBlazor.Domain.Entities.Unit.Outgoing
+﻿using FoodPlannerBlazor.Domain.Entities.Common;
+
+namespace FoodPlannerBlazor.Domain.Entities.Unit.Outgoing
 {
-    public record CreateUnit(string Name);
+    public class CreateUnit : NamedOnlyEntity
+    {
+    }
 }

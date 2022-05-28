@@ -2,6 +2,7 @@
 using FoodPlannerBlazor.Application.BusinessLogic.Product.Commands;
 using FoodPlannerBlazor.Domain.Entities.Category;
 using FoodPlannerBlazor.Domain.Entities.Product;
+using FoodPlannerBlazor.Domain.Entities.Product.Outgoing;
 using FoodPlannerBlazor.EditFormModels;
 using FoodPlannerBlazor.Infrastructure.Common;
 using FoodPlannerBlazor.ViewModels.Common;
@@ -39,7 +40,7 @@ namespace FoodPlannerBlazor.ViewModels
                 Categories = apiResponseWithMeals.Value;
         }
 
-        public async Task AddProductAsync(CreateProductFormModel formModel)
-            => Response = await _mediator.Send(new CreateProductCommand(formModel.Name, (int)formModel.CategoryId));
+        public async Task AddProductAsync(CreateProduct formModel)
+            => Response = await _mediator.Send(new CreateProductCommand(formModel));
     }
 }

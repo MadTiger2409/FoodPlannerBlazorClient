@@ -1,4 +1,9 @@
-﻿namespace FoodPlannerBlazor.Domain.Entities.Product.Outgoing
+﻿using FoodPlannerBlazor.Domain.Entities.Common;
+
+namespace FoodPlannerBlazor.Domain.Entities.Product.Outgoing
 {
-    public record CreateProduct(string Name, int CategoryId);
+    public class CreateProduct : NamedOnlyEntity
+    {
+        public int? CategoryId { get; set; }
+    }
 }

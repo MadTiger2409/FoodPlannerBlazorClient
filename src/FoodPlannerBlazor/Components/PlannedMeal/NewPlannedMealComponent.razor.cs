@@ -1,5 +1,5 @@
 ﻿using FoodPlannerBlazor.Components.Common;
-using FoodPlannerBlazor.EditFormModels;
+using FoodPlannerBlazor.Domain.Entities.PlannedMeal.Outgoing;
 using FoodPlannerBlazor.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +9,11 @@ namespace FoodPlannerBlazor.Components.PlannedMeal
 {
     public partial class NewPlannedMealComponent : BaseComponent<NewPlannedMealComponentViewModel>
     {
-        private CreatePlannedMealFormModel formModel = new();
+        private readonly CreatePlannedMeal _createPlannedMealModel = new();
 
         private bool showDetailsInformation = false;
 
-        private int? ConvertMeal(Domain.Entities.Meal.Meal meal) => meal?.Id;
+        private static int? ConvertMeal(Domain.Entities.Meal.Meal meal) => meal?.Id;
 
         private Domain.Entities.Meal.Meal LoadSelectedMeal(int? id) => ViewModel.Meals.FirstOrDefault(x => x.Id == id);
 
@@ -22,7 +22,7 @@ namespace FoodPlannerBlazor.Components.PlannedMeal
 
         private async Task OnValidSubmitAsync()
         {
-            await ViewModel.AddPlannedMealAsync(formModel);
+            await ViewModel.AddPlannedMealAsync(_createPlannedMealModel);
             showDetailsInformation = true;
         }
 

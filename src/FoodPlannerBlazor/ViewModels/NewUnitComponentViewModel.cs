@@ -1,5 +1,5 @@
 ﻿using FoodPlannerBlazor.Application.BusinessLogic.Unit.Commands;
-using FoodPlannerBlazor.EditFormModels;
+using FoodPlannerBlazor.Domain.Entities.Unit.Outgoing;
 using FoodPlannerBlazor.Infrastructure.Common;
 using FoodPlannerBlazor.ViewModels.Common;
 using MediatR;
@@ -20,6 +20,6 @@ namespace FoodPlannerBlazor.ViewModels
 
         public NewUnitComponentViewModel(ISender mediator) => _mediator = mediator;
 
-        public async Task AddUnitAsync(CreateUnitFormModel formModel) => Response = await _mediator.Send(new CreateUnitCommand(formModel.Name));
+        public async Task AddUnitAsync(CreateUnit formModel) => Response = await _mediator.Send(new CreateUnitCommand(formModel));
     }
 }

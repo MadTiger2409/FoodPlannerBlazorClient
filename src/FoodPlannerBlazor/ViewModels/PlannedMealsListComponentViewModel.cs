@@ -5,6 +5,7 @@ using FoodPlannerBlazor.ViewModels.Common;
 using MediatR;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace FoodPlannerBlazor.ViewModels
@@ -22,6 +23,15 @@ namespace FoodPlannerBlazor.ViewModels
 
         public PlannedMealsListComponentViewModel(ISender mediator) => _mediator = mediator;
 
-        public async Task GetPlannedMealsFromApiAsync(DateTime from, DateTime to) => Response = await _mediator.Send(new GetPlannedMealsQuery(from, to));
+        public Task GetPlannedMealsFromApiAsync(DateTime from, DateTime to) => GetPlannedMealsFromApiAsync(from, to, _mediator);
+        public async Task GetPlannedMealsFromApiAsync(DateTime from, DateTime to, ISender _mediator)
+        {
+            var plannedMeals = await _mediator.Send(new GetPlannedMealsQuery(from, to));
+
+            if (plannedMeals.Success && plannedMeals.Value.Count > 0)
+                plannedMeals.Value.ForEach(x => x.PlannedMeals = x.PlannedMeals.OrderBy(x => x.OrdinalNumber).ToList());
+
+            Response = plannedMeals;
+        }
     }
 }

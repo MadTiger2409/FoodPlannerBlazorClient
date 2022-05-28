@@ -37,7 +37,7 @@
 <div class="card">
     <h5 class="card-header">Plan a meal</h5>
     <div class="card-body">
-        <EditForm Model="formModel" OnValidSubmit="OnValidSubmitAsync">
+        <EditForm Model="_createPlannedMealModel" OnValidSubmit="OnValidSubmitAsync">
             <FluentValidationValidator />
 
             <div class="mb-3">
@@ -47,7 +47,7 @@
                                    ConvertMethod="@ConvertMeal"
                                    EnableDropDown="true"
                                    MaximumSuggestions="ViewModel.Meals.Count"
-                                   @bind-Value="formModel.MealId">
+                                   @bind-Value="_createPlannedMealModel.MealId">
                     <SelectedTemplate Context="mealId">
                         @{
                             var selectedMeal = LoadSelectedMeal(mealId);
@@ -59,19 +59,19 @@
                         @meal.Name
                     </ResultTemplate>
                 </BlazoredTypeahead>
-                <ValidationMessage For="() => formModel.MealId" />
+                <ValidationMessage For="() => _createPlannedMealModel.MealId" />
             </div>
 
             <div class="mb-3">
                 <label for="ordinalNumber" class="form-label">Ordinal number</label>
-                <InputNumber min="1" max="255" id="ordinalNumber" class="form-control" @bind-Value="formModel.OrdinalNumber" />
-                <ValidationMessage For="() => formModel.OrdinalNumber" />
+                <InputNumber min="1" max="255" id="ordinalNumber" class="form-control" @bind-Value="_createPlannedMealModel.OrdinalNumber" />
+                <ValidationMessage For="() => _createPlannedMealModel.OrdinalNumber" />
             </div>
 
             <div class="mb-3">
                 <label for="forDate" class="form-label">Scheduled for</label>
-                <InputDate id="forDate" class="form-control" @bind-Value="formModel.ScheduledFor" />
-                <ValidationMessage For="() => formModel.ScheduledFor" />
+                <InputDate id="forDate" class="form-control" @bind-Value="_createPlannedMealModel.ScheduledFor" />
+                <ValidationMessage For="() => _createPlannedMealModel.ScheduledFor" />
             </div>
 
             <button type="submit" class="btn btn-success">Send</button>

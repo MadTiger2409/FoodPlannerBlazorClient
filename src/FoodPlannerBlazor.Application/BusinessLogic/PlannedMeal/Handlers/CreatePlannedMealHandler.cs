@@ -1,5 +1,4 @@
 ﻿using FoodPlannerBlazor.Application.BusinessLogic.PlannedMeal.Commands;
-using FoodPlannerBlazor.Domain.Entities.PlannedMeal.Outgoing;
 using FoodPlannerBlazor.Infrastructure.Common;
 using FoodPlannerBlazor.Infrastructure.Extensions;
 using MediatR;
@@ -18,9 +17,8 @@ namespace FoodPlannerBlazor.Application.BusinessLogic.PlannedMeal.Handlers
         public async Task<ApiResponse<Domain.Entities.PlannedMeal.PlannedMeal>> Handle(CreatePlannedMealCommand request, CancellationToken cancellationToken)
         {
             var httpClient = _clientFactory.CreateClient("plannedMeals");
-            var outgoingObject = new CreatePlannedMeal(request.OrdinalNumber, request.ScheduledFor, request.MealId);
 
-            return await httpClient.PostWithDeserializationAsync<Domain.Entities.PlannedMeal.PlannedMeal>(outgoingObject);
+            return await httpClient.PostWithDeserializationAsync<Domain.Entities.PlannedMeal.PlannedMeal>(request.CreatePlannedMealModel);
         }
     }
 }

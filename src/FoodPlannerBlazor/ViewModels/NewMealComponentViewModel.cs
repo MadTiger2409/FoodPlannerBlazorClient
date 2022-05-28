@@ -1,10 +1,7 @@
-﻿using FoodPlannerBlazor.Application.BusinessLogic.Meal.Commands;
-using FoodPlannerBlazor.Domain.Entities.Meal;
-using FoodPlannerBlazor.EditFormModels;
+﻿using FoodPlannerBlazor.Domain.Entities.Meal;
 using FoodPlannerBlazor.Infrastructure.Common;
 using FoodPlannerBlazor.ViewModels.Common;
 using MediatR;
-using System.Threading.Tasks;
 
 namespace FoodPlannerBlazor.ViewModels
 {
@@ -21,6 +18,6 @@ namespace FoodPlannerBlazor.ViewModels
 
         public NewMealComponentViewModel(ISender mediator) => _mediator = mediator;
 
-        public async Task AddMealAsync(CreateMealFormModel formModel) => Response = await _mediator.Send(new CreateMealCommand(formModel.Name, formModel.Ingredients));
+        //public async Task AddMealAsync(CreateMealFormModel formModel) => Response = await _mediator.Send(new CreateMealCommand(formModel.Name, formModel.Ingredients));
     }
 }
