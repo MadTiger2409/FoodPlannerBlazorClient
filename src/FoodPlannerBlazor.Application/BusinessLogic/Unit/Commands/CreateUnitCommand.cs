@@ -1,7 +1,8 @@
-﻿using FoodPlannerBlazor.Infrastructure.Common;
+﻿using FoodPlannerBlazor.Domain.Entities.Unit.Outgoing;
+using FoodPlannerBlazor.Infrastructure.Common;
 using MediatR;
 
 namespace FoodPlannerBlazor.Application.BusinessLogic.Unit.Commands
 {
-    public record CreateUnitCommand(string Name) : IRequest<ApiResponse<Domain.Entities.Unit.Unit>>;
+    public record CreateUnitCommand(CreateUnit CreateUnitModel) : IRequest<ApiResponse<Domain.Entities.Unit.Unit>>;
 }

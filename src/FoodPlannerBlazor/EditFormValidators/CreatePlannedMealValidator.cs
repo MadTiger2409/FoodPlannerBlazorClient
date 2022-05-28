@@ -1,12 +1,12 @@
 ﻿using FluentValidation;
-using FoodPlannerBlazor.EditFormModels;
+using FoodPlannerBlazor.Domain.Entities.PlannedMeal.Outgoing;
 using System;
 
 namespace FoodPlannerBlazor.EditFormValidators
 {
-    public class CreatePlannedMealFormValidator : AbstractValidator<CreatePlannedMealFormModel>
+    public class CreatePlannedMealValidator : AbstractValidator<CreatePlannedMeal>
     {
-        public CreatePlannedMealFormValidator()
+        public CreatePlannedMealValidator()
         {
             RuleFor(x => x.MealId)
                 .NotNull()

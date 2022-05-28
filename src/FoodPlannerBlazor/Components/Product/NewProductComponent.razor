@@ -37,13 +37,13 @@
 <div class="card">
     <h5 class="card-header">Add product</h5>
     <div class="card-body">
-        <EditForm Model="formModel" OnValidSubmit="OnValidSubmitAsync">
+        <EditForm Model="_createProductModel" OnValidSubmit="OnValidSubmitAsync">
             <FluentValidationValidator />
 
             <div class="mb-3">
                 <label for="productNameText" class="form-label">Name</label>
-                <InputText id="productNameText" class="form-control" placeholder="Provide the name..." @bind-Value="formModel.Name" />
-                <ValidationMessage For="() => formModel.Name" />
+                <InputText id="productNameText" class="form-control" placeholder="Provide the name..." @bind-Value="_createProductModel.Name" />
+                <ValidationMessage For="() => _createProductModel.Name" />
             </div>
 
             <div class="mb-3">
@@ -53,7 +53,7 @@
                                    ConvertMethod="ConvertCategory"
                                    EnableDropDown="true"
                                    MaximumSuggestions="ViewModel.Categories.Count"
-                                   @bind-Value="formModel.CategoryId">
+                                   @bind-Value="_createProductModel.CategoryId">
                     <SelectedTemplate Context="categoryId">
                         @{
                             var selectedCategory = LoadSelectedCategory(categoryId);
@@ -65,7 +65,7 @@
                         @meal.Name
                     </ResultTemplate>
                 </BlazoredTypeahead>
-                <ValidationMessage For="() => formModel.CategoryId" />
+                <ValidationMessage For="() => _createProductModel.CategoryId" />
             </div>
 
             <button type="submit" class="btn btn-success">Send</button>

@@ -1,4 +1,9 @@
 ﻿namespace FoodPlannerBlazor.Domain.Entities.Ingredient.Outgoing
 {
-    public record CreateIngredient(int ProductId, int UnitId, float Amount);
+    public class CreateIngredient
+    {
+        public int ProductId { get; set; }
+        public int UnitId { get; set; }
+        public float Amount { get; set; }
+    }
 }

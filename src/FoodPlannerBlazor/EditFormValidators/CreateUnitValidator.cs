@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
-using FoodPlannerBlazor.EditFormModels;
+using FoodPlannerBlazor.Domain.Entities.Unit.Outgoing;
 
 namespace FoodPlannerBlazor.EditFormValidators
 {
-    public class CreateUnitFormModelValidator : AbstractValidator<CreateUnitFormModel>
+    public class CreateUnitValidator : AbstractValidator<CreateUnit>
     {
-        public CreateUnitFormModelValidator()
+        public CreateUnitValidator()
         {
             RuleFor(x => x.Name)
                 .NotEmpty()

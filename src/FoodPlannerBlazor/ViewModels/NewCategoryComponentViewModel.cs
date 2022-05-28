@@ -1,6 +1,6 @@
 ﻿using FoodPlannerBlazor.Application.BusinessLogic.Category.Commands;
 using FoodPlannerBlazor.Domain.Entities.Category;
-using FoodPlannerBlazor.EditFormModels;
+using FoodPlannerBlazor.Domain.Entities.Category.Outgoing;
 using FoodPlannerBlazor.Infrastructure.Common;
 using FoodPlannerBlazor.ViewModels.Common;
 using MediatR;
@@ -21,6 +21,6 @@ namespace FoodPlannerBlazor.ViewModels
 
         public NewCategoryComponentViewModel(ISender mediator) => _mediator = mediator;
 
-        public async Task AddCategoryAsync(CreateCategoryFormModel formModel) => Response = await _mediator.Send(new CreateCategoryCommand(formModel.Name));
+        public async Task AddCategoryAsync(CreateCategory createCategoryModel) => Response = await _mediator.Send(new CreateCategoryCommand(createCategoryModel));
     }
 }

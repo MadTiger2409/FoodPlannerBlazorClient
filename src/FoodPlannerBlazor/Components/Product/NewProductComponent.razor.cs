@@ -1,5 +1,5 @@
 ﻿using FoodPlannerBlazor.Components.Common;
-using FoodPlannerBlazor.EditFormModels;
+using FoodPlannerBlazor.Domain.Entities.Product.Outgoing;
 using FoodPlannerBlazor.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +9,11 @@ namespace FoodPlannerBlazor.Components.Product
 {
     public partial class NewProductComponent : BaseComponent<NewProductComponentViewModel>
     {
-        private CreateProductFormModel formModel = new();
+        private readonly CreateProduct _createProductModel = new();
 
         private bool showDetailsInformation = false;
 
-        private int? ConvertCategory(Domain.Entities.Category.Category category) => category?.Id;
+        private static int? ConvertCategory(Domain.Entities.Category.Category category) => category?.Id;
 
         private Domain.Entities.Category.Category LoadSelectedCategory(int? id) => ViewModel.Categories.FirstOrDefault(x => x.Id == id);
 
@@ -22,7 +22,7 @@ namespace FoodPlannerBlazor.Components.Product
 
         private async Task OnValidSubmitAsync()
         {
-            await ViewModel.AddProductAsync(formModel);
+            await ViewModel.AddProductAsync(_createProductModel);
             showDetailsInformation = true;
         }
 

@@ -1,4 +1,8 @@
-﻿namespace FoodPlannerBlazor.Domain.Entities.Category.Outgoing
+﻿using FoodPlannerBlazor.Domain.Entities.Common;
+
+namespace FoodPlannerBlazor.Domain.Entities.Category.Outgoing
 {
-    public record CreateCategory(string Name);
+    public class CreateCategory : NamedOnlyEntity
+    {
+    }
 }

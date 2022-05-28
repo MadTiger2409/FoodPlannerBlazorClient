@@ -1,7 +1,8 @@
-﻿using FoodPlannerBlazor.Infrastructure.Common;
+﻿using FoodPlannerBlazor.Domain.Entities.Product.Outgoing;
+using FoodPlannerBlazor.Infrastructure.Common;
 using MediatR;
 
 namespace FoodPlannerBlazor.Application.BusinessLogic.Product.Commands
 {
-    public record CreateProductCommand(string Name, int CategoryId) : IRequest<ApiResponse<Domain.Entities.Product.Product>>;
+    public record CreateProductCommand(CreateProduct CreateProductModel) : IRequest<ApiResponse<Domain.Entities.Product.Product>>;
 }

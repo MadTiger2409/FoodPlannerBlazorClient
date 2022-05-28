@@ -2,7 +2,7 @@
 using FoodPlannerBlazor.Application.BusinessLogic.PlannedMeal.Commands;
 using FoodPlannerBlazor.Domain.Entities.Meal;
 using FoodPlannerBlazor.Domain.Entities.PlannedMeal;
-using FoodPlannerBlazor.EditFormModels;
+using FoodPlannerBlazor.Domain.Entities.PlannedMeal.Outgoing;
 using FoodPlannerBlazor.Infrastructure.Common;
 using FoodPlannerBlazor.ViewModels.Common;
 using MediatR;
@@ -39,7 +39,7 @@ namespace FoodPlannerBlazor.ViewModels
                 Meals = apiResponseWithMeals.Value;
         }
 
-        public async Task AddPlannedMealAsync(CreatePlannedMealFormModel formModel)
-            => Response = await _mediator.Send(new CreatePlannedMealCommand(formModel.OrdinalNumber, formModel.ScheduledFor, (int)formModel.MealId));
+        public async Task AddPlannedMealAsync(CreatePlannedMeal formModel)
+            => Response = await _mediator.Send(new CreatePlannedMealCommand(formModel));
     }
 }

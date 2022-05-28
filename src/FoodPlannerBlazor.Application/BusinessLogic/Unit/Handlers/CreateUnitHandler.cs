@@ -1,5 +1,4 @@
 ﻿using FoodPlannerBlazor.Application.BusinessLogic.Unit.Commands;
-using FoodPlannerBlazor.Domain.Entities.Unit.Outgoing;
 using FoodPlannerBlazor.Infrastructure.Common;
 using FoodPlannerBlazor.Infrastructure.Extensions;
 using MediatR;
@@ -18,9 +17,8 @@ namespace FoodPlannerBlazor.Application.BusinessLogic.Unit.Handlers
         public async Task<ApiResponse<Domain.Entities.Unit.Unit>> Handle(CreateUnitCommand request, CancellationToken cancellationToken)
         {
             var httpClient = _clientFactory.CreateClient("units");
-            var outgoingObject = new CreateUnit(request.Name);
 
-            return await httpClient.PostWithDeserializationAsync<Domain.Entities.Unit.Unit>(outgoingObject);
+            return await httpClient.PostWithDeserializationAsync<Domain.Entities.Unit.Unit>(request.CreateUnitModel);
         }
     }
 }

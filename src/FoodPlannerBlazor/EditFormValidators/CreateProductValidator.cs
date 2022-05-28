@@ -1,12 +1,20 @@
 ﻿using FluentValidation;
-using FoodPlannerBlazor.EditFormModels;
+using FoodPlannerBlazor.Domain.Entities.Product.Outgoing;
 
 namespace FoodPlannerBlazor.EditFormValidators
 {
-    public class CreateCategoryFormModelValidator : AbstractValidator<CreateCategoryFormModel>
+    public class CreateProductValidator : AbstractValidator<CreateProduct>
     {
-        public CreateCategoryFormModelValidator()
+        public CreateProductValidator()
         {
+            RuleFor(x => x.CategoryId)
+                .NotNull()
+                .WithMessage("Category must be selected");
+
+            RuleFor(x => x.CategoryId)
+                .GreaterThan(0)
+                .WithMessage("Category must be selected");
+
             RuleFor(x => x.Name)
                 .NotEmpty()
                 .WithMessage("Name can't be empty");
