@@ -7,15 +7,11 @@ using System.Threading.Tasks;
 
 namespace FoodPlannerBlazor.Components.Product
 {
-    public partial class NewProductComponent : BaseComponent<NewProductComponentViewModel>
+    public partial class NewProductComponent : TypeaheadBaseComponent<NewProductComponentViewModel>
     {
         private readonly CreateProduct _createProductModel = new();
 
         private bool showDetailsInformation = false;
-
-        private static int? ConvertCategory(Domain.Entities.Category.Category category) => category?.Id;
-
-        private Domain.Entities.Category.Category LoadSelectedCategory(int? id) => ViewModel.Categories.FirstOrDefault(x => x.Id == id);
 
         private async Task<IEnumerable<Domain.Entities.Category.Category>> SearchCategoriesAsync(string searchedText)
             => await Task.FromResult(ViewModel.Categories.Where(x => x.Name.ToLower().Contains(searchedText.ToLower())).ToList());

@@ -1,4 +1,4 @@
-﻿@inherits BaseComponent<NewProductComponentViewModel>
+﻿@inherits TypeaheadBaseComponent<NewProductComponentViewModel>
 
 @page "/products/new"
 
@@ -50,13 +50,13 @@
                 <label for="categorySelector" class="form-label">Category</label>
                 <BlazoredTypeahead id="categorySelector" placeholder="Search by name..."
                                    SearchMethod="SearchCategoriesAsync"
-                                   ConvertMethod="ConvertCategory"
+                                   ConvertMethod="ConvertEntityToId<Domain.Entities.Category.Category>"
                                    EnableDropDown="true"
                                    MaximumSuggestions="ViewModel.Categories.Count"
                                    @bind-Value="_createProductModel.CategoryId">
                     <SelectedTemplate Context="categoryId">
                         @{
-                            var selectedCategory = LoadSelectedCategory(categoryId);
+                            var selectedCategory = LoadSelectedEntity<Domain.Entities.Category.Category>(categoryId, ViewModel.Categories);
 
                             <text>@selectedCategory.Name</text>
                         }

@@ -7,15 +7,11 @@ using System.Threading.Tasks;
 
 namespace FoodPlannerBlazor.Components.PlannedMeal
 {
-    public partial class NewPlannedMealComponent : BaseComponent<NewPlannedMealComponentViewModel>
+    public partial class NewPlannedMealComponent : TypeaheadBaseComponent<NewPlannedMealComponentViewModel>
     {
         private readonly CreatePlannedMeal _createPlannedMealModel = new();
 
         private bool showDetailsInformation = false;
-
-        private static int? ConvertMeal(Domain.Entities.Meal.Meal meal) => meal?.Id;
-
-        private Domain.Entities.Meal.Meal LoadSelectedMeal(int? id) => ViewModel.Meals.FirstOrDefault(x => x.Id == id);
 
         private async Task<IEnumerable<Domain.Entities.Meal.Meal>> SearchMealsAsync(string searchedText)
             => await Task.FromResult(ViewModel.Meals.Where(x => x.Name.ToLower().Contains(searchedText.ToLower())).ToList());

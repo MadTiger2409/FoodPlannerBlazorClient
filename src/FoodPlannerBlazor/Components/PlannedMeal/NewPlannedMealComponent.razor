@@ -1,4 +1,4 @@
-﻿@inherits BaseComponent<NewPlannedMealComponentViewModel>
+﻿@inherits TypeaheadBaseComponent<NewPlannedMealComponentViewModel>
 
 @page "/plannedMeals/new"
 
@@ -44,13 +44,13 @@
                 <label for="mealSelector" class="form-label">Meal</label>
                 <BlazoredTypeahead id="mealSelector" placeholder="Search by name..."
                                    SearchMethod="SearchMealsAsync"
-                                   ConvertMethod="@ConvertMeal"
+                                   ConvertMethod="ConvertEntityToId<Domain.Entities.Meal.Meal>"
                                    EnableDropDown="true"
                                    MaximumSuggestions="ViewModel.Meals.Count"
                                    @bind-Value="_createPlannedMealModel.MealId">
                     <SelectedTemplate Context="mealId">
                         @{
-                            var selectedMeal = LoadSelectedMeal(mealId);
+                            var selectedMeal = LoadSelectedEntity<Domain.Entities.Meal.Meal>(mealId, ViewModel.Meals);
 
                             <text>@selectedMeal.Name</text>
                         }
