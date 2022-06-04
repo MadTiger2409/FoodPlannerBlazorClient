@@ -16,7 +16,8 @@ namespace FoodPlannerBlazor.EditFormValidators
                 .WithMessage("The unit must be selected");
 
             RuleFor(x => x.Amount)
-                .GreaterThan(0.0f);
+                .GreaterThan(0.0f)
+                .WithMessage("Amount must be greater than 0");
         }
     }
 }
