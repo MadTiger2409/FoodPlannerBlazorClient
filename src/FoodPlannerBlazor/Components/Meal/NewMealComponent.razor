@@ -1,0 +1,148 @@
+﻿@inherits TypeaheadBaseComponent<NewMealComponentViewModel>
+
+@page "/meals/new"
+
+@if (showDetailsInformation)
+{
+    <div class="card">
+        @if (ViewModel.Response.Success)
+        {
+            <div class="card-header header-with-button">
+                <h5 class="float-start">Success</h5>
+                <button class="btn btn-close float-end" @onclick="() => { showDetailsInformation = false; }"></button>
+            </div>
+            <div class="card-body">
+                <p class="details-success">Meal created successfully</p>
+            </div>
+        }
+        else
+        {
+            <div class="card-header header-with-button">
+                <h5 class="float-start">@ViewModel.Response.Error.Title</h5>
+                <button class="btn btn-close float-end" @onclick="() => { showDetailsInformation = false; }"></button>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    @foreach (var detail in ViewModel.Response.Error.Details)
+                    {
+                        <li class="details-fail">@detail</li>
+                    }
+                </ul>
+            </div>
+        }
+    </div>
+    <br />
+}
+
+<div class="card">
+    <h5 class="card-header">Add meal</h5>
+    <div class="card-body">
+        <EditForm id="mealEditForm" Model="_createMealModel" OnValidSubmit="OnValidSubmitAsync">
+            <FluentValidationValidator />
+            <div class="mb-3">
+                <label for="mealNameText" class="form-label">Name</label>
+                <InputText id="mealNameText" class="form-control" placeholder="Provide the name..." @bind-Value="_createMealModel.Name" />
+                <ValidationSummary/>
+            </div>
+
+        </EditForm>
+
+            <div class="mb-3">
+                <label for="ingredientCard" class="form-label">Ingredient</label>
+                <EditForm Model="_newIngredientModel" OnValidSubmit="AddIngredientToIngredientsListAsync">
+                    <FluentValidationValidator />
+                    
+                    <div id="ingredientCard" class="card">
+                        <div class="container">
+                            <div class="row row-first">
+                                <div class="col-sm mb-3">
+                                    <label for="productSelector" class="form-label">Product</label>
+                                    <BlazoredTypeahead id="productSelector" placeholder="Search by name..."
+                                            SearchMethod="SearchProductsAsync"
+                                            ConvertMethod="ConvertEntityToId<Domain.Entities.Product.Product>"
+                                            EnableDropDown="true"
+                                            MaximumSuggestions="ViewModel.Products.Count"
+                                            @bind-Value="_newIngredientModel.ProductId">
+                                        <SelectedTemplate Context="productId">
+                                            @{
+                                                var selectedProduct = LoadSelectedEntity<Domain.Entities.Product.Product>(productId, ViewModel.Products);
+                                                <text>@selectedProduct.Name</text>
+                                            }
+                                        </SelectedTemplate>
+                                        <ResultTemplate Context="product">
+                                            @product.Name
+                                        </ResultTemplate>
+                                    </BlazoredTypeahead>
+                                    <ValidationMessage For="() => _newIngredientModel.ProductId" />
+                                </div>
+
+                                <div class="col-sm mb-3">
+                                    <label for="amountValue" class="form-label">Amount</label>
+                                    <InputNumber max="10000" id="amountValue" class="form-control" step="0.1" @bind-Value="_newIngredientModel.Amount"></InputNumber>
+                                    <ValidationMessage For="() => _newIngredientModel.Amount" />
+                                </div>
+
+                                <div class="col-sm mb-3">
+                                    <label for="unitSelector" class="form-label">Unit</label>
+                                    <BlazoredTypeahead id="unitSelector" placeholder="Search by name..."
+                                            SearchMethod="SearchUnitsAsync"
+                                            ConvertMethod="ConvertEntityToId<Domain.Entities.Unit.Unit>"
+                                            EnableDropDown="true"
+                                            MaximumSuggestions="ViewModel.Units.Count"
+                                            @bind-Value="_newIngredientModel.UnitId">
+                                        <SelectedTemplate Context="unitId">
+                                            @{
+                                                var selectedUnit = LoadSelectedEntity<Domain.Entities.Unit.Unit>(unitId, ViewModel.Units);
+                                                <text>@selectedUnit.Name</text>
+                                            }
+                                        </SelectedTemplate>
+                                        <ResultTemplate Context="unit">
+                                            @unit.Name
+                                        </ResultTemplate>
+                                    </BlazoredTypeahead>
+                                    <ValidationMessage For="() => _newIngredientModel.UnitId" />
+                                </div>
+                                <div class="row row-cols-1">
+                                    <div class="col-sm mb-3">
+                                        <button type="submit" class="btn btn-warning btn-sm">Add to list</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </EditForm>
+            </div>
+            <div class="col-sm mb-3">
+                <button type="submit" form="mealEditForm" class="btn btn-success">Send</button>
+            </div>
+            
+            @if (_createMealModel.Ingredients.Count > 0)
+            {
+                <div class="card">
+                    <table class="table table-striped table-hover align-middle text-center">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Amount</th>
+                                <th>Unit</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            @foreach (var ingredient in _createMealModel.Ingredients)
+                            {
+                                <tr>
+                                    <td>@ViewModel.Products.SingleOrDefault(x => x.Id == ingredient.ProductId).Name</td>
+                                    <td>@ingredient.Amount</td>
+                                    <td>@ViewModel.Units.SingleOrDefault(x => x.Id == ingredient.UnitId).Name</td>
+                                    <td><button class="btn btn-danger btn-sm" @onclick="() => {_createMealModel.Ingredients.Remove(ingredient);}">Delete</button></td>
+                                </tr>
+                            }
+                        </tbody>
+                        
+                    </table>
+                </div>
+            }
+    </div>
+</div>

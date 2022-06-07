@@ -2,8 +2,8 @@
 {
     public class CreateIngredient
     {
-        public int ProductId { get; set; }
-        public int UnitId { get; set; }
+        public int? ProductId { get; set; }
+        public int? UnitId { get; set; }
         public float Amount { get; set; }
     }
 }
