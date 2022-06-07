@@ -2,37 +2,10 @@
 
 @page "/plannedMeals/new"
 
-@if (showDetailsInformation)
-{
-    <div class="card">
-        @if (ViewModel.Response.Success)
-        {
-            <div class="card-header header-with-button">
-                <h5 class="float-start">Success</h5>
-                <button class="btn btn-close float-end" @onclick="() => { showDetailsInformation = false; }"></button>
-            </div>
-            <div class="card-body">
-                <p class="details-success">Meal planned successfully</p>
-            </div>
-        }
-        else
-        {
-            <div class="card-header header-with-button">
-                <h5 class="float-start">@ViewModel.Response.Error.Title</h5>
-                <button class="btn btn-close float-end" @onclick="() => { showDetailsInformation = false; }"></button>
-            </div>
-            <div class="card-body">
-                <ul class="list-group">
-                    @foreach (var detail in ViewModel.Response.Error.Details)
-                    {
-                        <li class="details-fail">@detail</li>
-                    }
-                </ul>
-            </div>
-        }
-    </div>
-    <br />
-}
+<ResponseStatusComponent T=@Domain.Entities.PlannedMeal.PlannedMeal
+                        Response=@ViewModel.Response
+                        SuccessMessage="Mealpalnned successfully"
+                        ShowDetailsInformation=@showDetailsInformation/>
 
 <div class="card">
     <h5 class="card-header">Plan a meal</h5>
