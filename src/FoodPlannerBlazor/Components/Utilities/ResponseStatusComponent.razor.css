@@ -1,0 +1,40 @@
+﻿.details-success {
+    background-color: #209f02;
+    color: #ffffff;
+}
+
+    .details-success h5 {
+        font-weight: bold;
+    }
+
+    .details-success p {
+        margin-bottom: 0rem;
+    }
+
+    .details-success .card-body {
+        background-color: #23b200;
+        padding: 1rem 2rem;
+    }
+
+.details-fail {
+    background-color: #bd0909;
+    color: #ffffff;
+}
+
+    .details-fail h5 {
+        font-weight: bold;
+    }
+
+    .details-fail ul li::before {
+        content: "\2022";
+        color: white;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+
+    .details-fail .card-body {
+        background-color: #ca0a0a;
+        padding: 1rem 2rem;
+    }
