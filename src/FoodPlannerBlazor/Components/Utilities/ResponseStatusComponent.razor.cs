@@ -8,12 +8,17 @@ namespace FoodPlannerBlazor.Components.Utilities
         private ApiResponse<T> _response;
         private string _successMessage;
         private bool _showDetailsInformation = false;
+        private string detailsCssClass;
 
         [Parameter]
         public ApiResponse<T> Response
         {
             get => _response;
-            set => _response = value;
+            set
+            {
+                _response = value;
+                detailsCssClass = Response.Success ? "details-success" : "details-fail";
+            }
         }
 
         [Parameter]
@@ -27,7 +32,23 @@ namespace FoodPlannerBlazor.Components.Utilities
         public bool ShowDetailsInformation
         {
             get => _showDetailsInformation;
-            set => _showDetailsInformation = value;
+            set
+            {
+                if (_showDetailsInformation == value)
+                    return;
+
+                _showDetailsInformation = value;
+                ShowDetailsInformationChanged.InvokeAsync(value);
+            }
+        }
+
+        [Parameter]
+        public EventCallback<bool> ShowDetailsInformationChanged { get; set; }
+
+        private void Hide()
+        {
+            detailsCssClass = string.Empty;
+            ShowDetailsInformation = false;
         }
     }
 }

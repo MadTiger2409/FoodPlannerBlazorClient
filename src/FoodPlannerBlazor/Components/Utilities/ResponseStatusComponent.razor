@@ -3,28 +3,28 @@
 
 @if (ShowDetailsInformation)
 {
-    <div class="card">
+    <div class="card @detailsCssClass">
         @if (Response.Success == true)
         {
             <div class="card-header header-with-button">
                 <h5 class="float-start">Success</h5>
-                <button class="btn btn-close float-end" @onclick="() => { ShowDetailsInformation = false; }"></button>
+                <button class="btn btn-close float-end" @onclick="Hide"></button>
             </div>
             <div class="card-body">
-                <p class="details-success">@SuccessMessage</p>
+                <p>@SuccessMessage</p>
             </div>
         }
         else
         {
             <div class="card-header header-with-button">
                 <h5 class="float-start">@Response.Error.Title</h5>
-                <button class="btn btn-close float-end" @onclick="() => { ShowDetailsInformation = false; }"></button>
+                <button class="btn btn-close float-end" @onclick="Hide"></button>
             </div>
             <div class="card-body">
                 <ul class="list-group">
                     @foreach (var detail in Response.Error.Details)
                     {
-                        <li class="details-fail">@detail</li>
+                        <li>@detail</li>
                     }
                 </ul>
             </div>
