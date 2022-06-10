@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Components\Utilities\NamedEntitiesListComponent.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Blazored.FluentValidation" Version="2.0.3" />
     <PackageReference Include="Blazored.Typeahead" Version="4.6.0" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.3.6" />
@@ -15,6 +19,14 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FoodPlannerBlazor.Application\FoodPlannerBlazor.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Components\Utilities\NamedEntitiesListComponent.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Components\Utilities\NamedEntitiesListComponent.razor" />
   </ItemGroup>
 
 </Project>
