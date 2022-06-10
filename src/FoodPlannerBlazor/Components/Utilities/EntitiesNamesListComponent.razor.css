@@ -1,0 +1,13 @@
+﻿.green-list {
+    text-align: center;
+}
+
+    .green-list > :nth-child(even) {
+        color: #368614;
+        background-color: #dce9b5;
+    }
+
+    .green-list > :nth-child(odd) {
+        color: #dce9b5;
+        background-color: #66a74c;
+    }

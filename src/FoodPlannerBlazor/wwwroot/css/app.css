@@ -31,14 +31,11 @@ a, .btn-link {
 }
 
 /* Custom */
-.list-group-item-lightGreen {
-    color: #368614;
-    background-color: #dce9b5;
-}
 
 .header-with-button {
     padding-bottom: 0rem;
 }
+
 /* End of the section */
 /* Bootstrap components global options */
 .accordion-button:focus {

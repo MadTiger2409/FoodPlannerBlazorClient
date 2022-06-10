@@ -44,17 +44,8 @@
         }
         else
         {
-            <ul class="list-group">
-                @for (int i = 1; i <= ViewModel.Response.Value.Count; i++)
-                {
-                    if (i % 2 == 0)
-                    {
-                        <li class="list-group-item">@ViewModel.Response.Value[i - 1].Name</li>
-                        continue;
-                    }
-                    <li class="list-group-item list-group-item-lightGreen">@ViewModel.Response.Value[i - 1].Name</li>
-                }
-            </ul>
+            <EntitiesNamesListComponent T="Domain.Entities.Category.Category"
+                                        Entities="ViewModel.Response.Value"/>
         }
     </div>
 </div>
