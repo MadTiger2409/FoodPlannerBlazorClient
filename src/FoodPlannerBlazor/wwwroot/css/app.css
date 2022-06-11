@@ -36,7 +36,18 @@ a, .btn-link {
     padding-bottom: 0rem;
 }
 
+.green-table > tr:nth-child(even) {
+    color: #368614;
+    background-color: #dce9b5;
+}
+
+.green-table > tr:nth-child(odd) {
+    color: #dce9b5;
+    background-color: #66a74c;
+}
+
 /* End of the section */
+
 /* Bootstrap components global options */
 .accordion-button:focus {
     box-shadow: none;
