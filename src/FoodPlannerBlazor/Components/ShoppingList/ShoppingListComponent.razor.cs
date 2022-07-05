@@ -8,6 +8,7 @@ using System;
 using System.Globalization;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using Microsoft.JSInterop;
 
 namespace FoodPlannerBlazor.Components.ShoppingList
 {
@@ -15,6 +16,9 @@ namespace FoodPlannerBlazor.Components.ShoppingList
     {
         [Inject]
         public NavigationManager NavigationManager { get; set; }
+
+        [Inject]
+        public IJSRuntime JSRuntime { get; set; }
 
         [Parameter]
         public DateTime From { get; set; } = DateTime.Now.Date;
@@ -30,14 +34,23 @@ namespace FoodPlannerBlazor.Components.ShoppingList
 
         protected override void OnInitialized()
         {
-            ViewModel.PropertyChanged += ListFileContentChanged;
+            ViewModel.PropertyChanged += ListFileContentChangedAsync;
         }
 
-        private void ListFileContentChanged(object sender, PropertyChangedEventArgs e)
+        private async void ListFileContentChangedAsync(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(ViewModel.ShoppingListFileContentResponse))
+            if (e.PropertyName == nameof(ViewModel.ShoppingListFileContentResponse)
+                && ViewModel.ShoppingListFileContentResponse.Success
+                && ViewModel.ShoppingListFileContentResponse.Value != null
+                && ViewModel.ShoppingListFileContentResponse.Value.Length > 0)
             {
-                // execute JS code for file downloading etc.
+                await JSRuntime.InvokeVoidAsync("downloadFromByteArray",
+                    new
+                    {
+                        ByteArray = ViewModel.ShoppingListFileContentResponse.Value,
+                        FileName = "shoppingList.pdf",
+                        ContentType = "application/pdf"
+                    });
             }
         }
 
@@ -83,7 +96,7 @@ namespace FoodPlannerBlazor.Components.ShoppingList
             if (!disposed)
             {
                 if (disposing)
-                    ViewModel.PropertyChanged -= ListFileContentChanged;
+                    ViewModel.PropertyChanged -= ListFileContentChangedAsync;
 
                 base.Dispose(disposing);
             }
