@@ -65,6 +65,7 @@ namespace FoodPlannerBlazor.Infrastructure.Extensions
                 }
 
                 var contentAsByteArray = await response.Content.ReadAsByteArrayAsync();
+                var fileName = response.Content.Headers.ContentDisposition.FileName;
 
                 return new ApiResponse<FileDataEntity>
                 {
@@ -73,7 +74,7 @@ namespace FoodPlannerBlazor.Infrastructure.Extensions
                     Value = new()
                     {
                         Content = contentAsByteArray,
-                        NameWithExtension = "shoppingList.pdf"
+                        NameWithExtension = fileName
                     }
                 };
             }
