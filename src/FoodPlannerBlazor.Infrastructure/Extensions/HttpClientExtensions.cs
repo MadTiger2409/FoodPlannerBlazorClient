@@ -1,7 +1,9 @@
-﻿using FoodPlannerBlazor.Domain.Entities.Error;
+﻿using FoodPlannerBlazor.Domain.Entities.Common;
+using FoodPlannerBlazor.Domain.Entities.Error;
 using FoodPlannerBlazor.Infrastructure.Common;
 using Newtonsoft.Json;
 using System;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -16,9 +18,9 @@ namespace FoodPlannerBlazor.Infrastructure.Extensions
             try
             {
                 var response = await client.GetAsync(uri);
-                var responseAsString = await response.Content.ReadAsStringAsync();
+                var contentAsString = await response.Content.ReadAsStringAsync();
 
-                if (string.IsNullOrWhiteSpace(responseAsString))
+                if (string.IsNullOrWhiteSpace(contentAsString))
                 {
                     return new ApiResponse<TResponse>
                     {
@@ -31,7 +33,7 @@ namespace FoodPlannerBlazor.Infrastructure.Extensions
                     };
                 }
 
-                return JsonConvert.DeserializeObject<ApiResponse<TResponse>>(responseAsString);
+                return JsonConvert.DeserializeObject<ApiResponse<TResponse>>(contentAsString);
             }
             catch (Exception)
             {
@@ -44,6 +46,41 @@ namespace FoodPlannerBlazor.Infrastructure.Extensions
                         Details = new() { "Something went wrong. Try again later." }
                     }
                 };
+            }
+        }
+
+        public static async Task<ApiResponse<FileDataEntity>> GetFileWithDeserializationAsync(this HttpClient client, string uri = "")
+        {
+            try
+            {
+                var response = await client.GetAsync(uri);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    var contentAsString = await response.Content.ReadAsStringAsync();
+                    if (string.IsNullOrWhiteSpace(contentAsString))
+                        return GetFailedApiResponse<FileDataEntity>(response.StatusCode.ToString());
+
+                    return JsonConvert.DeserializeObject<ApiResponse<FileDataEntity>>(contentAsString);
+                }
+
+                var contentAsByteArray = await response.Content.ReadAsByteArrayAsync();
+
+                return new ApiResponse<FileDataEntity>
+                {
+                    Success = true,
+                    Error = null,
+                    Value = new()
+                    {
+                        Content = contentAsByteArray,
+                        NameWithExtension = "shoppingList.pdf"
+                    }
+                };
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return GetFailedApiResponse<FileDataEntity>();
             }
         }
 
@@ -55,34 +92,16 @@ namespace FoodPlannerBlazor.Infrastructure.Extensions
                 httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
                 var response = await client.PostAsync(uri, httpContent);
-                var responseAsString = await response.Content.ReadAsStringAsync();
+                var contentAsString = await response.Content.ReadAsStringAsync();
 
-                if (string.IsNullOrWhiteSpace(responseAsString))
-                {
-                    return new ApiResponse<TResponse>
-                    {
-                        Success = false,
-                        Error = new RequestError
-                        {
-                            Title = response.StatusCode.ToString(),
-                            Details = new() { "Something went wrong. Try again later." }
-                        }
-                    };
-                }
+                if (string.IsNullOrWhiteSpace(contentAsString))
+                    return GetFailedApiResponse<TResponse>(response.StatusCode.ToString());
 
-                return JsonConvert.DeserializeObject<ApiResponse<TResponse>>(responseAsString);
+                return JsonConvert.DeserializeObject<ApiResponse<TResponse>>(contentAsString);
             }
             catch (Exception)
             {
-                return new ApiResponse<TResponse>
-                {
-                    Success = false,
-                    Error = new RequestError
-                    {
-                        Title = "Unknown error",
-                        Details = new() { "Something went wrong. Try again later." }
-                    }
-                };
+                return GetFailedApiResponse<TResponse>();
             }
         }
 
@@ -94,35 +113,30 @@ namespace FoodPlannerBlazor.Infrastructure.Extensions
                 httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
                 var response = await client.PutAsync(uri, httpContent);
-                var responseAsString = await response.Content.ReadAsStringAsync();
+                var contentAsString = await response.Content.ReadAsStringAsync();
 
-                if (string.IsNullOrWhiteSpace(responseAsString))
-                {
-                    return new ApiResponse<TResponse>
-                    {
-                        Success = false,
-                        Error = new RequestError
-                        {
-                            Title = response.StatusCode.ToString(),
-                            Details = new() { "Something went wrong. Try again later." }
-                        }
-                    };
-                }
+                if (string.IsNullOrWhiteSpace(contentAsString))
+                    return GetFailedApiResponse<TResponse>(response.StatusCode.ToString());
 
-                return JsonConvert.DeserializeObject<ApiResponse<TResponse>>(responseAsString);
+                return JsonConvert.DeserializeObject<ApiResponse<TResponse>>(contentAsString);
             }
             catch (Exception)
             {
-                return new ApiResponse<TResponse>
-                {
-                    Success = false,
-                    Error = new RequestError
-                    {
-                        Title = "Unknown error",
-                        Details = new() { "Something went wrong. Try again later." }
-                    }
-                };
+                return GetFailedApiResponse<TResponse>();
             }
+        }
+
+        private static ApiResponse<TModel> GetFailedApiResponse<TModel>(string title = "Unknown error")
+        {
+            return new ApiResponse<TModel>
+            {
+                Success = false,
+                Error = new RequestError
+                {
+                    Title = title,
+                    Details = new() { "Something went wrong. Try again later." }
+                }
+            };
         }
     }
 }

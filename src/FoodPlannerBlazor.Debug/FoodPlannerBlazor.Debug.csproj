@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FoodPlannerBlazor.Application\FoodPlannerBlazor.Application.csproj" />
+    <ProjectReference Include="..\FoodPlannerBlazor\FoodPlannerBlazor.csproj" />
   </ItemGroup>
 
 </Project>

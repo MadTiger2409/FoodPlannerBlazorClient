@@ -1,5 +1,6 @@
 ﻿using FoodPlannerBlazor.Application;
 using FoodPlannerBlazor.Infrastructure;
+using FoodPlannerBlazor.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
@@ -15,6 +16,8 @@ namespace FoodPlannerBlazor.Debug
 
             services.AddInfrastructure();
             services.AddApplication();
+
+            services.AddTransient<ShoppingListComponentViewModel>();
 
             ServiceProvider = services.BuildServiceProvider();
         }

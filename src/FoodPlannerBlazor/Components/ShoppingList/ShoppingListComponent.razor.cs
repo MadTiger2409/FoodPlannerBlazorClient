@@ -42,13 +42,13 @@ namespace FoodPlannerBlazor.Components.ShoppingList
             if (e.PropertyName == nameof(ViewModel.ShoppingListFileContentResponse)
                 && ViewModel.ShoppingListFileContentResponse.Success
                 && ViewModel.ShoppingListFileContentResponse.Value != null
-                && ViewModel.ShoppingListFileContentResponse.Value.Length > 0)
+                && ViewModel.ShoppingListFileContentResponse.Value.Content.Length > 0)
             {
                 await JSRuntime.InvokeVoidAsync("downloadFromByteArray",
                     new
                     {
-                        ByteArray = ViewModel.ShoppingListFileContentResponse.Value,
-                        FileName = "shoppingList.pdf",
+                        ByteArray = ViewModel.ShoppingListFileContentResponse.Value.Content,
+                        FileName = ViewModel.ShoppingListFileContentResponse.Value.NameWithExtension,
                         ContentType = "application/pdf"
                     });
             }

@@ -1,4 +1,5 @@
 ﻿using FoodPlannerBlazor.Application.BusinessLogic.ShoppingList.Queries;
+using FoodPlannerBlazor.Domain.Entities.Common;
 using FoodPlannerBlazor.Infrastructure.Common;
 using FoodPlannerBlazor.Infrastructure.Extensions;
 using MediatR;
@@ -11,13 +12,13 @@ using System.Threading.Tasks;
 
 namespace FoodPlannerBlazor.Application.BusinessLogic.ShoppingList.Handlers
 {
-    public class GetShoppingListFileContentHandler : IRequestHandler<GetShoppingListFileContentQuery, ApiResponse<byte[]>>
+    public class GetShoppingListFileContentHandler : IRequestHandler<GetShoppingListFileContentQuery, ApiResponse<FileDataEntity>>
     {
         private readonly IHttpClientFactory _clientFactory;
 
         public GetShoppingListFileContentHandler(IHttpClientFactory clientFactory) => _clientFactory = clientFactory;
 
-        public async Task<ApiResponse<byte[]>> Handle(GetShoppingListFileContentQuery request, CancellationToken cancellationToken)
+        public async Task<ApiResponse<FileDataEntity>> Handle(GetShoppingListFileContentQuery request, CancellationToken cancellationToken)
         {
             var httpClient = _clientFactory.CreateClient("shoppingList");
 
@@ -29,9 +30,7 @@ namespace FoodPlannerBlazor.Application.BusinessLogic.ShoppingList.Handlers
             };
             var partialQuery = QueryHelpers.AddQueryString("pdf", queryParams);
 
-            // Change it to do correct deserialization
-            // Maybe add new extension method to get file with deserialization?
-            return await httpClient.GetWithDeserializationAsync<byte[]>(partialQuery);
+            return await httpClient.GetFileWithDeserializationAsync(partialQuery);
         }
     }
 }

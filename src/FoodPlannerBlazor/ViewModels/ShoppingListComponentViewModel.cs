@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using MediatR;
 using FoodPlannerBlazor.Application.BusinessLogic.ShoppingList.Queries;
+using FoodPlannerBlazor.Domain.Entities.Common;
 
 namespace FoodPlannerBlazor.ViewModels
 {
@@ -15,7 +16,7 @@ namespace FoodPlannerBlazor.ViewModels
         private readonly ISender _mediator;
 
         private ApiResponse<List<ShoppingListItem>> _shoppingListResponse = new();
-        private ApiResponse<byte[]> shoppingListFileContentResponse;
+        private ApiResponse<FileDataEntity> shoppingListFileContentResponse;
 
         public ApiResponse<List<ShoppingListItem>> ShoppingListResponse
         {
@@ -23,7 +24,7 @@ namespace FoodPlannerBlazor.ViewModels
             set => SetValue(ref _shoppingListResponse, value);
         }
 
-        public ApiResponse<byte[]> ShoppingListFileContentResponse
+        public ApiResponse<FileDataEntity> ShoppingListFileContentResponse
         {
             get => shoppingListFileContentResponse;
             set => SetValue(ref shoppingListFileContentResponse, value);
