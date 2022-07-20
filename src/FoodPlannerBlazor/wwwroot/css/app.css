@@ -46,6 +46,12 @@ a, .btn-link {
     background-color: #66a74c;
 }
 
+table {
+    table-layout: fixed;
+    width: 100%;
+    height: 100%;
+}
+
 /* End of the section */
 
 /* Bootstrap components global options */

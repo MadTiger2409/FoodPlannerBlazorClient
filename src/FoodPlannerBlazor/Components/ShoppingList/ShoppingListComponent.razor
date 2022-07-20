@@ -42,4 +42,36 @@
         </div>
     </div>
 </EditForm>
+
 <br />
+
+@if (ViewModel.ShoppingListResponse.Value != null && ViewModel.ShoppingListResponse.Value.Count > 0)
+{
+    <div class="card">
+        <table class="table align-middle text-center">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Product</th>
+                    <th>Amount</th>
+                    <th>Unit</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
+
+            <tbody class="green-table">
+                @foreach (var ingredient in ViewModel.ShoppingListResponse.Value)
+                {
+                    <tr>
+                        <td>@(ViewModel.ShoppingListResponse.Value.IndexOf(ingredient)+1)</td>
+                        <td>@ingredient.Name</td>
+                        <td>@ingredient.Amount</td>
+                        <td>@ingredient.Unit</td>
+                        <td>@ingredient.Category</td>
+                    </tr>
+                }
+            </tbody>
+                        
+        </table>
+    </div>
+}
