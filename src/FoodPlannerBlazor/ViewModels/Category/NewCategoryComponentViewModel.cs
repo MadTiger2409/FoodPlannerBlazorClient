@@ -1,19 +1,18 @@
 ﻿using FoodPlannerBlazor.Application.BusinessLogic.Category.Commands;
-using FoodPlannerBlazor.Domain.Entities.Category;
 using FoodPlannerBlazor.Domain.Entities.Category.Outgoing;
 using FoodPlannerBlazor.Infrastructure.Common;
 using FoodPlannerBlazor.ViewModels.Common;
 using MediatR;
 using System.Threading.Tasks;
 
-namespace FoodPlannerBlazor.ViewModels
+namespace FoodPlannerBlazor.ViewModels.Category
 {
     public class NewCategoryComponentViewModel : BaseViewModel
     {
         private readonly ISender _mediator;
-        private ApiResponse<Category> _response = new();
+        private ApiResponse<Domain.Entities.Category.Category> _response = new();
 
-        public ApiResponse<Category> Response
+        public ApiResponse<Domain.Entities.Category.Category> Response
         {
             get => _response;
             set => SetValue(ref _response, value);

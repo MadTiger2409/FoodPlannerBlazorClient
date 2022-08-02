@@ -1,7 +1,12 @@
 using FluentValidation;
 using FoodPlannerBlazor.Application;
 using FoodPlannerBlazor.Infrastructure;
-using FoodPlannerBlazor.ViewModels;
+using FoodPlannerBlazor.ViewModels.Category;
+using FoodPlannerBlazor.ViewModels.Meal;
+using FoodPlannerBlazor.ViewModels.PlannedMeal;
+using FoodPlannerBlazor.ViewModels.Product;
+using FoodPlannerBlazor.ViewModels.ShoppingList;
+using FoodPlannerBlazor.ViewModels.Unit;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using System;

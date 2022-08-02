@@ -1,8 +1,7 @@
 ﻿using FoodPlannerBlazor.Components.Common;
 using FoodPlannerBlazor.Domain.Entities.Ingredient.Outgoing;
 using FoodPlannerBlazor.Domain.Entities.Meal.Outgoing;
-using FoodPlannerBlazor.ViewModels;
-using System;
+using FoodPlannerBlazor.ViewModels.Meal;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

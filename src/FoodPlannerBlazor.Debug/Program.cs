@@ -1,4 +1,4 @@
-﻿using FoodPlannerBlazor.ViewModels;
+﻿using FoodPlannerBlazor.ViewModels.ShoppingList;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.ComponentModel;

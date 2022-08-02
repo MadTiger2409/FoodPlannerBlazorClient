@@ -1,6 +1,6 @@
 ﻿using FoodPlannerBlazor.Application;
 using FoodPlannerBlazor.Infrastructure;
-using FoodPlannerBlazor.ViewModels;
+using FoodPlannerBlazor.ViewModels.ShoppingList;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 

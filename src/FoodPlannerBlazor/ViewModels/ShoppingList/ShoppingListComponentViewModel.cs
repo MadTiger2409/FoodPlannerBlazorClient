@@ -9,7 +9,7 @@ using MediatR;
 using FoodPlannerBlazor.Application.BusinessLogic.ShoppingList.Queries;
 using FoodPlannerBlazor.Domain.Entities.Common;
 
-namespace FoodPlannerBlazor.ViewModels
+namespace FoodPlannerBlazor.ViewModels.ShoppingList
 {
     public class ShoppingListComponentViewModel : BaseViewModel
     {

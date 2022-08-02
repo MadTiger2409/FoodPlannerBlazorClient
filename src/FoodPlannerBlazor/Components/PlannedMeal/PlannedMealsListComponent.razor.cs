@@ -1,6 +1,6 @@
 ﻿using FoodPlannerBlazor.Components.Common;
 using FoodPlannerBlazor.EditFormModels;
-using FoodPlannerBlazor.ViewModels;
+using FoodPlannerBlazor.ViewModels.PlannedMeal;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.WebUtilities;
 using System;

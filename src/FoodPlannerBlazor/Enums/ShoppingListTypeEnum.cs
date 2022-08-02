@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization;
-
-namespace FoodPlannerBlazor.Enums
+﻿namespace FoodPlannerBlazor.Enums
 {
     public enum ShoppingListTypeEnum
     {

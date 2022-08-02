@@ -1,7 +1,6 @@
 ﻿using FoodPlannerBlazor.Enums;
 using FoodPlannerBlazor.Components.Common;
 using FoodPlannerBlazor.EditFormModels;
-using FoodPlannerBlazor.ViewModels;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.WebUtilities;
 using System;
@@ -9,6 +8,7 @@ using System.Globalization;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using Microsoft.JSInterop;
+using FoodPlannerBlazor.ViewModels.ShoppingList;
 
 namespace FoodPlannerBlazor.Components.ShoppingList
 {

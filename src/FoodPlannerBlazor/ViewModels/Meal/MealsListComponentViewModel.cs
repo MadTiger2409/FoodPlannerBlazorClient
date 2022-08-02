@@ -5,7 +5,7 @@ using MediatR;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace FoodPlannerBlazor.ViewModels
+namespace FoodPlannerBlazor.ViewModels.Meal
 {
     public class MealsListComponentViewModel : BaseViewModel
     {

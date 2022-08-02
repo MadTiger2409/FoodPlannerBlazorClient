@@ -1,6 +1,6 @@
 ﻿using FoodPlannerBlazor.Components.Common;
 using FoodPlannerBlazor.Domain.Entities.Product.Outgoing;
-using FoodPlannerBlazor.ViewModels;
+using FoodPlannerBlazor.ViewModels.Product;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

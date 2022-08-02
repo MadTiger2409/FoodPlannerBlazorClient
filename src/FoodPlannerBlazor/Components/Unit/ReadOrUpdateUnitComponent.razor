@@ -1,23 +1,25 @@
 ﻿@page "/units/{id:int}"
 
-<ResponseStatusComponent T=@Domain.Entities.Unit.Unit
-                        Response=@ViewModel.Response
+@*<ResponseStatusComponent T=@Domain.Entities.Unit.Unit
+                        Response=@ViewModel.UpdateResponse
                         SuccessMessage="Unit updated successfully"
-                        @bind-ShowDetailsInformation=@showDetailsInformation/>
+                        @bind-ShowDetailsInformation=@showDetailsInformation/>*@
 
 <div class="card">
     <h5 class="card-header">Update unit</h5>
     <div class="card-body">
-        <EditForm Model="_createUnitModel" OnValidSubmit="OnValidSubmitAsync">
+        <EditForm Model="_updateUnitModel" OnValidSubmit="OnValidSubmitAsync">
             <FluentValidationValidator />
+            <fieldset disabled="@_disabled">
+                <div class="mb-3">
+                    <label for="categoryNameText" class="form-label">Name</label>
+                    <InputText id="categoryNameText" class="form-control" placeholder="Provide the name..." @bind-Value="_updateUnitModel.Name" />
+                    <ValidationMessage For="() => _updateUnitModel.Name" />
+                </div>
+            </fieldset>
 
-            <div class="mb-3">
-                <label for="categoryNameText" class="form-label">Name</label>
-                <InputText id="categoryNameText" class="form-control" placeholder="Provide the name..." @bind-Value="_createUnitModel.Name" />
-                <ValidationMessage For="() => _createUnitModel.Name" />
-            </div>
-
-            <button type="submit" class="btn btn-success">Send</button>
+            <button type="submit" class="btn btn-success" disabled="@_disabled">Send</button>
+            <button class="btn @_editButtonClass card-link" @onclick="ToggleEdit">@_editButtonValue</button>
         </EditForm>
     </div>
 </div>
