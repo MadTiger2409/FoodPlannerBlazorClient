@@ -1,9 +1,11 @@
-﻿@page "/units/{id:int}"
+﻿@inherits BaseComponent<ReadOrUpdateUnitComponentViewModel>
 
-@*<ResponseStatusComponent T=@Domain.Entities.Unit.Unit
-                        Response=@ViewModel.UpdateResponse
+@page "/units/{id:int}"
+
+<ResponseStatusComponent T=@Domain.Entities.Unit.Unit
+                        Response=@ViewModel.UpdateUnitResponse
                         SuccessMessage="Unit updated successfully"
-                        @bind-ShowDetailsInformation=@showDetailsInformation/>*@
+                        @bind-ShowDetailsInformation=@showDetailsInformation/>
 
 <div class="card">
     <h5 class="card-header">Update unit</h5>
@@ -19,7 +21,7 @@
             </fieldset>
 
             <button type="submit" class="btn btn-success" disabled="@_disabled">Send</button>
-            <button class="btn @_editButtonClass card-link" @onclick="ToggleEdit">@_editButtonValue</button>
+            <button type="button" class="btn @_editButtonClass card-link" @onclick="ToggleEdit">@_editButtonValue</button>
         </EditForm>
     </div>
 </div>
