@@ -26,7 +26,8 @@ namespace FoodPlannerBlazor.Components.Unit
             await base.OnInitializedAsync();
             await ViewModel.GetUnitFromApiAsync(Id);
 
-            _updateUnitModel.Name = ViewModel.GetUnitResponse.Value.Name;
+            if (ViewModel.GetUnitResponse.Success)
+                _updateUnitModel.Name = ViewModel.GetUnitResponse.Value.Name;
         }
 
         private async Task OnValidSubmitAsync()
