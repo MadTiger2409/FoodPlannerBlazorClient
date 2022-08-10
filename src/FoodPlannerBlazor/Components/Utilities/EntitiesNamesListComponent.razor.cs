@@ -8,5 +8,8 @@ namespace FoodPlannerBlazor.Components.Utilities
     {
         [Parameter]
         public List<T> Entities { get; set; }
+
+        [Parameter]
+        public string PathToDetails { get; set; }
     }
 }

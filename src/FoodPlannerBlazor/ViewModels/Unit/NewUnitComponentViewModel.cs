@@ -5,7 +5,7 @@ using FoodPlannerBlazor.ViewModels.Common;
 using MediatR;
 using System.Threading.Tasks;
 
-namespace FoodPlannerBlazor.ViewModels
+namespace FoodPlannerBlazor.ViewModels.Unit
 {
     public class NewUnitComponentViewModel : BaseViewModel
     {

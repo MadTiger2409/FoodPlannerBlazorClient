@@ -3,6 +3,17 @@
 <ul class="list-group green-list">
 	@foreach (var entity in Entities)
 	{
-		<li class="list-group-item">@entity.Name</li>
+		<li class="list-group-item">
+			@if (!string.IsNullOrEmpty(PathToDetails))
+			{
+				<a href="@($"{PathToDetails}/{entity.Id}")">
+					@entity.Name
+				</a>
+			}
+			else
+			{
+				@entity.Name
+			}
+		</li>
 	}
 </ul>

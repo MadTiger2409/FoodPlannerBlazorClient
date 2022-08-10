@@ -1,7 +1,12 @@
 using FluentValidation;
 using FoodPlannerBlazor.Application;
 using FoodPlannerBlazor.Infrastructure;
-using FoodPlannerBlazor.ViewModels;
+using FoodPlannerBlazor.ViewModels.Category;
+using FoodPlannerBlazor.ViewModels.Meal;
+using FoodPlannerBlazor.ViewModels.PlannedMeal;
+using FoodPlannerBlazor.ViewModels.Product;
+using FoodPlannerBlazor.ViewModels.ShoppingList;
+using FoodPlannerBlazor.ViewModels.Unit;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -34,6 +39,8 @@ namespace FoodPlannerBlazor
             builder.Services.AddTransient<NewUnitComponentViewModel>();
             builder.Services.AddTransient<NewProductComponentViewModel>();
             builder.Services.AddTransient<NewMealComponentViewModel>();
+
+            builder.Services.AddTransient<ReadOrUpdateUnitComponentViewModel>();
 
             await builder.Build().RunAsync();
         }

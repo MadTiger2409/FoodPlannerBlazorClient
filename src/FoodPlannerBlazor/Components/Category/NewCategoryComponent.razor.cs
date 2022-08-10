@@ -1,6 +1,6 @@
 ﻿using FoodPlannerBlazor.Components.Common;
 using FoodPlannerBlazor.Domain.Entities.Category.Outgoing;
-using FoodPlannerBlazor.ViewModels;
+using FoodPlannerBlazor.ViewModels.Category;
 using System.Threading.Tasks;
 
 namespace FoodPlannerBlazor.Components.Category
