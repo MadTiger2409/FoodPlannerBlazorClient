@@ -1,4 +1,15 @@
-﻿.green-list {
+﻿a {
+    color: inherit;
+    text-decoration: inherit;
+    display: inline-block;
+    width: 100%;
+}
+
+li:hover, li:active {
+    filter: brightness(96%)
+}
+
+.green-list {
     text-align: center;
 }
 

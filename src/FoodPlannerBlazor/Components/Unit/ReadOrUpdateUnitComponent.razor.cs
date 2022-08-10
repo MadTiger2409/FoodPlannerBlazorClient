@@ -54,7 +54,7 @@ namespace FoodPlannerBlazor.Components.Unit
                 _editButtonValue = "Edit";
                 _disabled = true;
 
-                _updateUnitModel.Name = ViewModel.GetUnitResponse.Value.Name;
+                _updateUnitModel = new UpdateUnit { Name = ViewModel.GetUnitResponse.Value.Name };
             }
         }
     }
