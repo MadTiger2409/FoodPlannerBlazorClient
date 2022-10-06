@@ -11,16 +11,16 @@
                 <div class="row row-first">
                     <div class="col-sm mb-3">
                         <label for="fromDate" class="form-label">Start date</label>
-                        <InputDate id="fromDate" class="form-control" @bind-Value="formModel.From" />
+                        <InputDate locator="plannedMealsStartDateInput" id="fromDate" class="form-control" @bind-Value="formModel.From" />
                     </div>
                     <div class="col-sm mb-3">
                         <label for="toDate" class="form-label">End date</label>
-                        <InputDate id="toDate" class="form-control" @bind-Value="formModel.To" />
+                        <InputDate locator="plannedMealsEndDateInput" id="toDate" class="form-control" @bind-Value="formModel.To" />
                     </div>
                 </div>
                 <div class="row row-cols-1">
                     <div class="col-sm mb-3">
-                        <button type="submit" class="btn btn-success">Send</button>
+                        <button locator="plannedMealsSendButton" type="submit" class="btn btn-success">Send</button>
                     </div>
                 </div>
                 <div class="row row-cols-1">

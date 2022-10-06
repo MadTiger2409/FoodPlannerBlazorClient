@@ -9,12 +9,12 @@
             <div class="row row-first">
                 <div class="col-sm mb-3">
                     <label for="nameInputText" class="form-label">Name (optional)</label>
-                    <InputText id="nameInputText" class="form-control" placeholder="Search by name..." @bind-Value="formModel.Name" />
+                    <InputText locator="mealNameText" id="nameInputText" class="form-control" placeholder="Search by name..." @bind-Value="formModel.Name" />
                 </div>
             </div>
             <div class="row row-cols-1">
                 <div class="col-sm mb-3">
-                    <button type="submit" class="btn btn-success">Send</button>
+                    <button locator="mealSendButton" type="submit" class="btn btn-success">Send</button>
                 </div>
             </div>
             <div class="row row-cols-1">

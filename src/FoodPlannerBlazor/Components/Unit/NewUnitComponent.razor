@@ -14,8 +14,8 @@
             <FluentValidationValidator />
 
             <div class="mb-3">
-                <label for="categoryNameText" class="form-label">Name</label>
-                <InputText locator="unitNameText" id="categoryNameText" class="form-control" placeholder="Provide the name..." @bind-Value="_createUnitModel.Name" />
+                <label for="unitNameText" class="form-label">Name</label>
+                <InputText locator="unitNameText" id="unitNameText" class="form-control" placeholder="Provide the name..." @bind-Value="_createUnitModel.Name" />
                 <ValidationMessage locator="unitNameError" For="() => _createUnitModel.Name" />
             </div>
 
