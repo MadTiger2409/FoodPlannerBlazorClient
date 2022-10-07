@@ -16,7 +16,7 @@
             <div class="mb-3">
                 <label for="categoryNameText" class="form-label">Name</label>
                 <InputText locator="categoryNameText" id="categoryNameText" class="form-control" placeholder="Provide the name..." @bind-Value="_createCategoryModel.Name" />
-                <ValidationMessage For="() => _createCategoryModel.Name" />
+                <ValidationMessage locator="categoryNameError" For="() => _createCategoryModel.Name" />
             </div>
 
             <button locator="categorySendButton" type="submit" class="btn btn-success">Send</button>

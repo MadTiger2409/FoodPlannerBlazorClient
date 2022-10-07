@@ -16,7 +16,7 @@
             <div class="mb-3">
                 <label for="productNameText" class="form-label">Name</label>
                 <InputText locator="productNameText" id="productNameText" class="form-control" placeholder="Provide the name..." @bind-Value="_createProductModel.Name" />
-                <ValidationMessage For="() => _createProductModel.Name" />
+                <ValidationMessage locator="productNameError" For="() => _createProductModel.Name" />
             </div>
 
             <div class="mb-3">
@@ -38,7 +38,7 @@
                         @meal.Name
                     </ResultTemplate>
                 </BlazoredTypeahead>
-                <ValidationMessage For="() => _createProductModel.CategoryId" />
+                <ValidationMessage locator="productCategoryItemError" For="() => _createProductModel.CategoryId" />
             </div>
 
             <button locator="productSendButton" type="submit" class="btn btn-success">Send</button>

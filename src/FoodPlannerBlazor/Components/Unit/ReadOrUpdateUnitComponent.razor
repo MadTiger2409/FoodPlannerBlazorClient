@@ -30,7 +30,7 @@
                     <div class="mb-3">
                         <label for="unitNameText" class="form-label">Name</label>
                         <InputText locator="unitNameText" id="unitNameText" class="form-control" placeholder="Provide the name..." @bind-Value="_updateUnitModel.Name" />
-                        <ValidationMessage For="() => _updateUnitModel.Name" />
+                        <ValidationMessage locator="unitNameError" For="() => _updateUnitModel.Name" />
                     </div>
                 </fieldset>
 

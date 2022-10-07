@@ -15,7 +15,7 @@
             <div class="mb-3">
                 <label for="mealNameText" class="form-label">Name</label>
                 <InputText locator="mealNameTextInput" id="mealNameText" class="form-control" placeholder="Provide the name..." @bind-Value="_createMealModel.Name" />
-                <ValidationSummary/>
+                <ValidationSummary locator="mealFormErrors"/>
             </div>
 
         </EditForm>
@@ -46,13 +46,13 @@
                                             @product.Name
                                         </ResultTemplate>
                                     </BlazoredTypeahead>
-                                    <ValidationMessage For="() => _newIngredientModel.ProductId" />
+                                    <ValidationMessage locator="mealIngredientProductItemError" For="() => _newIngredientModel.ProductId" />
                                 </div>
 
                                 <div class="col-sm mb-3">
                                     <label for="amountValue" class="form-label">Amount</label>
                                     <InputNumber locator="mealIngredientAmountInput" max="10000" id="amountValue" class="form-control" step="0.01" @bind-Value="_newIngredientModel.Amount"></InputNumber>
-                                    <ValidationMessage For="() => _newIngredientModel.Amount" />
+                                    <ValidationMessage locator="mealIngredientAmountError" For="() => _newIngredientModel.Amount" />
                                 </div>
 
                                 <div class="col-sm mb-3">
@@ -73,7 +73,7 @@
                                             @unit.Name
                                         </ResultTemplate>
                                     </BlazoredTypeahead>
-                                    <ValidationMessage For="() => _newIngredientModel.UnitId" />
+                                    <ValidationMessage locator="mealIngredientUnitItemError" For="() => _newIngredientModel.UnitId" />
                                 </div>
                                 <div class="row row-cols-1">
                                     <div class="col-sm mb-3">
