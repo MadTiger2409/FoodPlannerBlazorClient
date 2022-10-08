@@ -28,14 +28,14 @@
                 <FluentValidationValidator />
                 <fieldset disabled="@_disabled">
                     <div class="mb-3">
-                        <label for="categoryNameText" class="form-label">Name</label>
-                        <InputText id="categoryNameText" class="form-control" placeholder="Provide the name..." @bind-Value="_updateUnitModel.Name" />
-                        <ValidationMessage For="() => _updateUnitModel.Name" />
+                        <label for="unitNameText" class="form-label">Name</label>
+                        <InputText locator="unitNameText" id="unitNameText" class="form-control" placeholder="Provide the name..." @bind-Value="_updateUnitModel.Name" />
+                        <ValidationMessage locator="unitNameError" For="() => _updateUnitModel.Name" />
                     </div>
                 </fieldset>
 
-                <button type="submit" class="btn btn-success" disabled="@_disabled">Send</button>
-                <button type="button" class="btn @_editButtonClass card-link" @onclick="ToggleEdit">@_editButtonValue</button>
+                <button locator="unitSendButton" type="submit" class="btn btn-success" disabled="@_disabled">Send</button>
+                <button locator="unitEditButton" type="button" class="btn @_editButtonClass card-link" @onclick="ToggleEdit">@_editButtonValue</button>
             </EditForm>
         </div>
     }

@@ -2,12 +2,12 @@
 
 @if (ShowDetailsInformation)
 {
-    <div class="card @detailsCssClass">
+    <div locator="responseStatusCard" class="card @detailsCssClass">
         @if (Response.Success == true)
         {
             <div class="card-header header-with-button">
-                <h5 class="float-start">Success</h5>
-                <button class="btn btn-close float-end" @onclick="Hide"></button>
+                <h5 locator="responseStatusTitle" class="float-start">Success</h5>
+                <button locator="responseStatusCloseButton" class="btn btn-close float-end" @onclick="Hide"></button>
             </div>
             <div class="card-body">
                 <p>@SuccessMessage</p>
@@ -16,8 +16,8 @@
         else
         {
             <div class="card-header header-with-button">
-                <h5 class="float-start">@Response.Error.Title</h5>
-                <button class="btn btn-close float-end" @onclick="Hide"></button>
+                <h5 locator="responseStatusTitle" class="float-start">@Response.Error.Title</h5>
+                <button locator="responseStatusCloseButton" class="btn btn-close float-end" @onclick="Hide"></button>
             </div>
             <div class="card-body">
                 <ul class="list-group">

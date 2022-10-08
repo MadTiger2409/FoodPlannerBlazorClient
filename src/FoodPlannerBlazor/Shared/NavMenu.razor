@@ -8,7 +8,7 @@
 <div class="collapse navbar-collapse" id="navbarToggleContent">
     <ul class="nav flex-column">
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+            <NavLink locator="navMenuHomeButton" class="nav-link" href="" Match="NavLinkMatch.All">
                 <span class="fa-solid fa-house" aria-hidden="true"></span> Home
             </NavLink>
         </li>
@@ -16,7 +16,7 @@
         <li><hr class="dropdown-divider"></li>
 
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="shoppingList" Match="NavLinkMatch.All">
+            <NavLink locator="navMenuShoppingListButton" class="nav-link" href="shoppingList" Match="NavLinkMatch.All">
                 <span class="fa-solid fa-clipboard-list" aria-hidden="true"></span> Shopping List
             </NavLink>
         </li>
@@ -24,7 +24,7 @@
         <li><hr class="dropdown-divider"></li>
 
         <li class="nav-item px-3 ">
-            <NavLink class="nav-link" href="javascript: void(0);" @onclick="() => ToggleSubMenu(ref plannedMealsSubMenuVisible)">
+            <NavLink locator="navMenuTogglePlannedMealsButton" class="nav-link" href="javascript: void(0);" @onclick="() => ToggleSubMenu(ref plannedMealsSubMenuVisible)">
                 <span class="fa-solid fa-calendar" aria-hidden="true"></span> Planned Meals
             </NavLink>
 
@@ -32,12 +32,12 @@
             {
                 <ul class="nav flex-column">
                     <li class="nav-item px-3">
-                        <NavLink class="nav-link" href="plannedMeals" Match="NavLinkMatch.All">
+                        <NavLink locator="navMenuAllPlannedMealsButton class="nav-link" href="plannedMeals" Match="NavLinkMatch.All">
                             <i class="fa-solid fa-list" aria-hidden="true"></i> All
                         </NavLink>
                     </li>
                     <li class="nav-item px-3">
-                        <NavLink class="nav-link" href="plannedMeals/new" Match="NavLinkMatch.All">
+                        <NavLink locator="navMenuAddPlannedMealButton" class="nav-link" href="plannedMeals/new" Match="NavLinkMatch.All">
                             <span class="fa-solid fa-plus" aria-hidden="true"></span> Add
                         </NavLink>
                     </li>
@@ -46,19 +46,19 @@
         </li>
 
         <li class="nav-item px-3 ">
-            <NavLink class="nav-link" href="javascript: void(0);" @onclick="() => ToggleSubMenu(ref mealsSubMenuVisible)">
+            <NavLink locator="navMenuToggleMealsButton" class="nav-link" href="javascript: void(0);" @onclick="() => ToggleSubMenu(ref mealsSubMenuVisible)">
                 <span class="fa-solid fa-drumstick-bite" aria-hidden="true"></span> Meals
             </NavLink>
             @if (mealsSubMenuVisible)
             {
                 <ul class="nav flex-column">
                     <li class="nav-item px-3">
-                        <NavLink class="nav-link" href="meals" Match="NavLinkMatch.All">
+                        <NavLink locator="navMenuAllMealsButton" class="nav-link" href="meals" Match="NavLinkMatch.All">
                             <i class="fa-solid fa-list" aria-hidden="true"></i> All
                         </NavLink>
                     </li>
                     <li class="nav-item px-3">
-                        <NavLink class="nav-link" href="meals/new" Match="NavLinkMatch.All">
+                        <NavLink locator="navMenuAddMealButton" class="nav-link" href="meals/new" Match="NavLinkMatch.All">
                             <span class="fa-solid fa-plus" aria-hidden="true"></span> Add
                         </NavLink>
                     </li>
@@ -69,19 +69,19 @@
         <li><hr class="dropdown-divider"></li>
 
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="javascript: void(0);" @onclick="() => ToggleSubMenu(ref productsSubMenuVisible)">
+            <NavLink locator="navMenuToggleProductsButton" class="nav-link" href="javascript: void(0);" @onclick="() => ToggleSubMenu(ref productsSubMenuVisible)">
                 <span class="fa-solid fa-cart-shopping" aria-hidden="true"></span> Products
             </NavLink>
             @if (productsSubMenuVisible)
             {
                 <ul class="nav flex-column">
                     <li class="nav-item px-3">
-                        <NavLink class="nav-link" href="products" Match="NavLinkMatch.All">
+                        <NavLink locator="navMenuAllProductsButton" class="nav-link" href="products" Match="NavLinkMatch.All">
                             <span class="fa-solid fa-list" aria-hidden="true"></span> All
                         </NavLink>
                     </li>
                     <li class="nav-item px-3">
-                        <NavLink class="nav-link" href="products/new" Match="NavLinkMatch.All">
+                        <NavLink locator="navMenuAddProductButton" class="nav-link" href="products/new" Match="NavLinkMatch.All">
                             <span class="fa-solid fa-plus" aria-hidden="true"></span> Add
                         </NavLink>
                     </li>
@@ -90,19 +90,19 @@
         </li>
 
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="javascript: void(0);" @onclick="() => ToggleSubMenu(ref categoriesSubMenuVisible)">
+            <NavLink locator="navMenuToggleCategoriesButton" class="nav-link" href="javascript: void(0);" @onclick="() => ToggleSubMenu(ref categoriesSubMenuVisible)">
                 <span class="fa-solid fa-clipboard-list" aria-hidden="true"></span> Categories
             </NavLink>
             @if (categoriesSubMenuVisible)
             {
                 <ul class="nav flex-column">
                     <li class="nav-item px-3">
-                        <NavLink class="nav-link" href="categories" Match="NavLinkMatch.All">
+                        <NavLink locator="navMenuAllCategoriesButton" class="nav-link" href="categories" Match="NavLinkMatch.All">
                             <span class="fa-solid fa-list" aria-hidden="true"></span> All
                         </NavLink>
                     </li>
                     <li class="nav-item px-3">
-                        <NavLink class="nav-link" href="categories/new" Match="NavLinkMatch.All">
+                        <NavLink locator="navMenuAddCategoryButton" class="nav-link" href="categories/new" Match="NavLinkMatch.All">
                             <span class="fa-solid fa-plus" aria-hidden="true"></span> Add
                         </NavLink>
                     </li>
@@ -111,19 +111,19 @@
         </li>
 
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="javascript: void(0);" @onclick="() => ToggleSubMenu(ref unitsSubMenuVisible)">
+            <NavLink locator="navMenuToggleUnitsButton" class="nav-link" href="javascript: void(0);" @onclick="() => ToggleSubMenu(ref unitsSubMenuVisible)">
                 <span class="fa-solid fa-scale-unbalanced" aria-hidden="true"></span> Units
             </NavLink>
             @if (unitsSubMenuVisible)
             {
                 <ul class="nav flex-column">
                     <li class="nav-item px-3">
-                        <NavLink class="nav-link" href="units" Match="NavLinkMatch.All">
+                        <NavLink locator="navMenuAllUnitsButton" class="nav-link" href="units" Match="NavLinkMatch.All">
                             <span class="fa-solid fa-list" aria-hidden="true"></span> All
                         </NavLink>
                     </li>
                     <li class="nav-item px-3">
-                        <NavLink class="nav-link" href="units/new" Match="NavLinkMatch.All">
+                        <NavLink locator="navMenuAddUnitButton" class="nav-link" href="units/new" Match="NavLinkMatch.All">
                             <span class="fa-solid fa-plus" aria-hidden="true"></span> Add
                         </NavLink>
                     </li>

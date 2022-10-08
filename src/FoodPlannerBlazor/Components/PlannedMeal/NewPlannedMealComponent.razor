@@ -15,7 +15,7 @@
 
             <div class="mb-3">
                 <label for="mealSelector" class="form-label">Meal</label>
-                <BlazoredTypeahead id="mealSelector" placeholder="Search by name..."
+                <BlazoredTypeahead locator="plannedMealMealSelector" id="mealSelector" placeholder="Search by name..."
                                    SearchMethod="SearchMealsAsync"
                                    ConvertMethod="ConvertEntityToId<Domain.Entities.Meal.Meal>"
                                    EnableDropDown="true"
@@ -32,22 +32,22 @@
                         @meal.Name
                     </ResultTemplate>
                 </BlazoredTypeahead>
-                <ValidationMessage For="() => _createPlannedMealModel.MealId" />
+                <ValidationMessage locator="plannedMealItemError" For="() => _createPlannedMealModel.MealId" />
             </div>
 
             <div class="mb-3">
                 <label for="ordinalNumber" class="form-label">Ordinal number</label>
-                <InputNumber min="1" max="255" id="ordinalNumber" class="form-control" @bind-Value="_createPlannedMealModel.OrdinalNumber" />
-                <ValidationMessage For="() => _createPlannedMealModel.OrdinalNumber" />
+                <InputNumber min="1" max="255" locator="plannedMealOrdinalNumberInput" id="ordinalNumber" class="form-control" @bind-Value="_createPlannedMealModel.OrdinalNumber" />
+                <ValidationMessage locator="plannedMealOrdinalNumberError" For="() => _createPlannedMealModel.OrdinalNumber" />
             </div>
 
             <div class="mb-3">
                 <label for="forDate" class="form-label">Scheduled for</label>
-                <InputDate id="forDate" class="form-control" @bind-Value="_createPlannedMealModel.ScheduledFor" />
-                <ValidationMessage For="() => _createPlannedMealModel.ScheduledFor" />
+                <InputDate locator="plannedMealForDateInput" id="forDate" class="form-control" @bind-Value="_createPlannedMealModel.ScheduledFor" />
+                <ValidationMessage lcoator="plannedMealScheduledForError" For="() => _createPlannedMealModel.ScheduledFor" />
             </div>
 
-            <button type="submit" class="btn btn-success">Send</button>
+            <button locator="plannedMealSendButton" type="submit" class="btn btn-success">Send</button>
         </EditForm>
     </div>
 </div>

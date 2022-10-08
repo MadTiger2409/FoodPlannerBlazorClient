@@ -9,21 +9,21 @@
             <div class="row row-first">
                 <div class="col-sm mb-3">
                     <label for="fromDate" class="form-label">Start date</label>
-                    <InputDate id="fromDate" class="form-control" @bind-Value="formModel.From" />
+                    <InputDate locator="shoppingListStartDate" id="fromDate" class="form-control" @bind-Value="formModel.From" />
                 </div>
                 <div class="col-sm mb-3">
                     <label for="toDate" class="form-label">End date</label>
-                    <InputDate id="toDate" class="form-control" @bind-Value="formModel.To" />
+                    <InputDate locator="shoppingListEndDate" id="toDate" class="form-control" @bind-Value="formModel.To" />
                 </div>
                 <div class="col-sm mb-3">
                     <label for="peopleCount" class="form-label">People count</label>
-                    <InputNumber id="peopleCount" class="form-control" @bind-Value="formModel.PeopleCount" step="0.5" min="0.5" max="10000"/>
+                    <InputNumber locator="shoppingListPeopleCount" id="peopleCount" class="form-control" @bind-Value="formModel.PeopleCount" step="0.5" min="0.5" max="10000"/>
                 </div>
             </div>
             <div class="row row-cols-1">
                 <div class="col-sm mb-3">
                     <label for="listType" class="form-label">Get as</label>
-                    <InputSelect id="listType" class="form-control" @bind-Value="formModel.Type">
+                    <InputSelect locator="shoppingListType" id="listType" class="form-control" @bind-Value="formModel.Type">
                         @foreach (var listType in Enum.GetValues(typeof(FoodPlannerBlazor.Enums.ShoppingListTypeEnum)))
                         {
                             <option value="@listType">@listType.ToString().Replace('_', ' ')</option>
@@ -33,11 +33,11 @@
             </div>
             <div class="row row-cols-1">
                 <div class="col-sm mb-3">
-                    <button type="submit" class="btn btn-success">Send</button>
+                    <button locator="shoppingListSendButton" type="submit" class="btn btn-success">Send</button>
                 </div>
             </div>
             <div class="row row-cols-1">
-                <ValidationSummary />
+                <ValidationSummary locator="shoppingListFormErrors"/>
             </div>
         </div>
     </div>
@@ -59,7 +59,7 @@
                 </tr>
             </thead>
 
-            <tbody class="green-table">
+            <tbody locator="shoppingListItemsTable" class="green-table">
                 @foreach (var ingredient in ViewModel.ShoppingListResponse.Value)
                 {
                     <tr>
