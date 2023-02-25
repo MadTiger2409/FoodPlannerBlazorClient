@@ -1,9 +1,9 @@
 @typeparam T
 
-<ul class="list-group green-list">
+<ul locator="entitiesList" class="list-group green-list">
 	@foreach (var entity in Entities)
 	{
-		<li locator="entitiesList" class="list-group-item">
+		<li class="list-group-item">
 			@if (!string.IsNullOrEmpty(PathToDetails))
 			{
 				<a href="@($"{PathToDetails}/{entity.Id}")">
