@@ -2,10 +2,20 @@
 
 @page "/units/{id:int}"
 
+
 <ResponseStatusComponent T=@Domain.Entities.Unit.Unit
                         Response=@ViewModel.UpdateUnitResponse
                         SuccessMessage="Unit updated successfully"
                         @bind-ShowDetailsInformation=@showDetailsInformation/>
+
+
+@if (ViewModel.GetUnitResponse.Success == true)
+{
+    <DeleteEntityModalComponent @ref="deleteModal" T="@Domain.Entities.Unit.Unit"
+                            Entity="@ViewModel.GetUnitResponse.Value"
+                            OnDeleteEntity="() => {Console.WriteLine('X');}" />
+}
+
 
 <div class="card">
     @if (ViewModel.GetUnitResponse.Success == false)
@@ -36,6 +46,7 @@
 
                 <button locator="unitSendButton" type="submit" class="btn btn-success" disabled="@_disabled">Send</button>
                 <button locator="unitEditButton" type="button" class="btn @_editButtonClass card-link" @onclick="ToggleEdit">@_editButtonValue</button>
+                <button locator="unitDeleteButton" type="button" class="btn btn-danger" @onclick="() => deleteModal.Open()">Delete</button>
             </EditForm>
         </div>
     }

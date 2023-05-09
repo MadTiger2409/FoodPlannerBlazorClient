@@ -1,8 +1,8 @@
 ﻿using FoodPlannerBlazor.Components.Common;
+using FoodPlannerBlazor.Components.Modals;
 using FoodPlannerBlazor.Domain.Entities.Unit.Outgoing;
 using FoodPlannerBlazor.ViewModels.Unit;
 using Microsoft.AspNetCore.Components;
-using System;
 using System.Threading.Tasks;
 
 namespace FoodPlannerBlazor.Components.Unit
@@ -13,6 +13,7 @@ namespace FoodPlannerBlazor.Components.Unit
         public int Id { get; set; }
 
         private UpdateUnit _updateUnitModel = new();
+        private DeleteEntityModalComponent<Domain.Entities.Unit.Unit> deleteModal;
 
         private bool showDetailsInformation = false;
 
