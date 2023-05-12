@@ -22,7 +22,7 @@ namespace FoodPlannerBlazor.Components.Modals
             modalClass = "fade show";
         }
 
-        private async Task DeleteEntity(MouseEventArgs e, int? entityId)
+        private async Task DeleteEntityAsync(MouseEventArgs e, int? entityId)
         {
             await OnDeleteEntity.InvokeAsync(entityId);
             Close();

@@ -3,6 +3,7 @@ using FoodPlannerBlazor.Components.Modals;
 using FoodPlannerBlazor.Domain.Entities.Unit.Outgoing;
 using FoodPlannerBlazor.ViewModels.Unit;
 using Microsoft.AspNetCore.Components;
+using System;
 using System.Threading.Tasks;
 
 namespace FoodPlannerBlazor.Components.Unit
@@ -11,6 +12,9 @@ namespace FoodPlannerBlazor.Components.Unit
     {
         [Parameter]
         public int Id { get; set; }
+
+        [Inject]
+        public NavigationManager NavigationManager { get; set; }
 
         private UpdateUnit _updateUnitModel = new();
         private DeleteEntityModalComponent<Domain.Entities.Unit.Unit> deleteModal;
@@ -39,6 +43,14 @@ namespace FoodPlannerBlazor.Components.Unit
                 ToggleEdit();
 
             showDetailsInformation = true;
+        }
+
+        private async Task OnDeleteAsync()
+        {
+            await ViewModel.DeleteUnitAsync(Id);
+
+            if (ViewModel.DeleteUnitResponse.Success == true)
+                NavigationManager.NavigateTo("/units");
         }
 
         private void ToggleEdit()

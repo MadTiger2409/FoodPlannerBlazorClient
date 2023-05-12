@@ -11,7 +11,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" data-dismiss="modal" @onclick="Close">No</button>
-                <button type="button" class="btn btn-secondary" @onclick="(args) => DeleteEntity(args, (int?)Entity.Id)" >Yes</button>
+                <button type="button" class="btn btn-secondary" @onclick="async (args) => await DeleteEntityAsync(args, (int?)Entity.Id)" >Yes</button>
             </div>
         </div>
     </div>

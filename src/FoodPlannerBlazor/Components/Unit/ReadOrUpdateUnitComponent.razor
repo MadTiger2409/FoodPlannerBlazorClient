@@ -13,7 +13,7 @@
 {
     <DeleteEntityModalComponent @ref="deleteModal" T="@Domain.Entities.Unit.Unit"
                             Entity="@ViewModel.GetUnitResponse.Value"
-                            OnDeleteEntity="() => {Console.WriteLine('X');}" />
+                            OnDeleteEntity="async () => await OnDeleteAsync()" />
 }
 
 

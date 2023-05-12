@@ -4,6 +4,7 @@ using FoodPlannerBlazor.Infrastructure.Common;
 using Newtonsoft.Json;
 using System;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -124,6 +125,32 @@ namespace FoodPlannerBlazor.Infrastructure.Extensions
             catch (Exception)
             {
                 return GetFailedApiResponse<TResponse>();
+            }
+        }
+
+        public static async Task<ApiResponse<string>> DeleteWithDeserializationAsync(this HttpClient client, int id)
+        {
+            try
+            {
+                var response = await client.DeleteAsync(id.ToString());
+
+                var contentAsString = await response.Content.ReadAsStringAsync();
+
+                if (response.StatusCode == HttpStatusCode.NoContent)
+                    return new ApiResponse<string>
+                    {
+                        Success = true,
+                        Value = "The content has been successfully deleted."
+                    };
+
+                if (string.IsNullOrWhiteSpace(contentAsString))
+                    return GetFailedApiResponse<string>(response.StatusCode.ToString());
+
+                return JsonConvert.DeserializeObject<ApiResponse<string>>(contentAsString);
+            }
+            catch (Exception)
+            {
+                return GetFailedApiResponse<string>();
             }
         }
 
