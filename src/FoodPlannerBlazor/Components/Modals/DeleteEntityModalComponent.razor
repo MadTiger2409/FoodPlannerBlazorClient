@@ -1,17 +1,17 @@
 ﻿@typeparam T
 
-<div locator="deleteModal" class="modal @modalClass" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="deleteEntityModalLabel" aria-hidden="true" style="display:@modalDisplay;">
+<div locator="deleteEntityModal" class="modal @modalClass" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="deleteEntityModalLabel" aria-hidden="true" style="display:@modalDisplay;">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 locator="deleteModalTitle" class="card-title" id="deleteEntityModalLabel">Delete @Entity.Name</h5>
+                <h5 locator="deleteEntityModalTitle" class="card-title" id="deleteEntityModalLabel">Delete @Entity.Name</h5>
             </div>
             <div class="modal-body">
-                <p lcoator="deleteModalMessage">Are you sure you want to delete <u>@Entity.Name</u>?</p>
+                <p lcoator="deleteEntityModalMessage">Are you sure you want to delete <u>@Entity.Name</u>?</p>
             </div>
             <div class="modal-footer">
-                <button locator="deleteModalNoButton" type="button" class="btn btn-success" data-dismiss="modal" @onclick="Close">No</button>
-                <button locator="deleteModalYesButton" type="button" class="btn btn-secondary" @onclick="async (args) => await DeleteEntityAsync(args, (int?)Entity.Id)" >Yes</button>
+                <button locator="deleteEntityModalNoButton" type="button" class="btn btn-success" data-dismiss="modal" @onclick="Close">No</button>
+                <button locator="deleteEntityModalYesButton" type="button" class="btn btn-secondary" @onclick="async (args) => await DeleteEntityAsync(args, (int?)Entity.Id)" >Yes</button>
             </div>
         </div>
     </div>
