@@ -1,32 +1,32 @@
 <Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Content Remove="Components\Utilities\NamedEntitiesListComponent.razor" />
-  </ItemGroup>
+	<ItemGroup>
+		<Content Remove="Components\Utilities\NamedEntitiesListComponent.razor" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Blazored.FluentValidation" Version="2.0.3" />
-    <PackageReference Include="Blazored.Typeahead" Version="4.6.0" />
-    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.3.6" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.13" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.13" PrivateAssets="all" />
-    <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Blazored.FluentValidation" Version="2.1.0" />
+		<PackageReference Include="Blazored.Typeahead" Version="4.7.0" />
+		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.3.6" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.11" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.11" PrivateAssets="all" />
+		<PackageReference Include="System.Net.Http.Json" Version="7.0.1" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\FoodPlannerBlazor.Application\FoodPlannerBlazor.Application.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\FoodPlannerBlazor.Application\FoodPlannerBlazor.Application.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Components\Utilities\NamedEntitiesListComponent.razor" />
-  </ItemGroup>
+	<ItemGroup>
+		<UpToDateCheckInput Remove="Components\Utilities\NamedEntitiesListComponent.razor" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Components\Utilities\NamedEntitiesListComponent.razor" />
-  </ItemGroup>
+	<ItemGroup>
+		<_ContentIncludedByDefault Remove="Components\Utilities\NamedEntitiesListComponent.razor" />
+	</ItemGroup>
 
 </Project>
