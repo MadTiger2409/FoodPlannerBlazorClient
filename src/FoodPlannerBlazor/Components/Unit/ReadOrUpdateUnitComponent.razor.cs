@@ -50,7 +50,16 @@ namespace FoodPlannerBlazor.Components.Unit
             await ViewModel.DeleteUnitAsync(Id);
 
             if (ViewModel.DeleteUnitResponse.Success == true)
+            {
                 NavigationManager.NavigateTo("/units");
+            }
+            else
+            {
+                ViewModel.UpdateUnitResponse.Error = ViewModel.DeleteUnitResponse.Error;
+                ViewModel.UpdateUnitResponse.Success = false;
+
+                showDetailsInformation = true;
+            }
         }
 
         private void ToggleEdit()
