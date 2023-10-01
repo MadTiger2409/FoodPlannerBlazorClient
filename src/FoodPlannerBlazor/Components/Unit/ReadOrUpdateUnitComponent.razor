@@ -2,10 +2,20 @@
 
 @page "/units/{id:int}"
 
+
 <ResponseStatusComponent T=@Domain.Entities.Unit.Unit
                         Response=@ViewModel.UpdateUnitResponse
                         SuccessMessage="Unit updated successfully"
                         @bind-ShowDetailsInformation=@showDetailsInformation/>
+
+
+@if (ViewModel.GetUnitResponse.Success == true)
+{
+    <DeleteEntityModalComponent @ref="deleteModal" T="@Domain.Entities.Unit.Unit"
+                            Entity="@ViewModel.GetUnitResponse.Value"
+                            OnDeleteEntity="async () => await OnDeleteAsync()" />
+}
+
 
 <div class="card">
     @if (ViewModel.GetUnitResponse.Success == false)
@@ -34,8 +44,15 @@
                     </div>
                 </fieldset>
 
-                <button locator="unitSendButton" type="submit" class="btn btn-success" disabled="@_disabled">Send</button>
-                <button locator="unitEditButton" type="button" class="btn @_editButtonClass card-link" @onclick="ToggleEdit">@_editButtonValue</button>
+                <div class="row g-2">
+                    <div class="col-8">
+                        <button locator="unitSendButton" type="submit" class="btn btn-success" disabled="@_disabled">Send</button>
+                        <button locator="unitEditButton" type="button" class="btn @_editButtonClass card-link" @onclick="ToggleEdit">@_editButtonValue</button>
+                    </div>
+                    <div class="col-4 text-end">
+                        <button locator="unitDeleteButton" type="button" class="btn btn-danger" @onclick="() => deleteModal.Open()">Delete</button>
+                    </div>
+                </div>
             </EditForm>
         </div>
     }

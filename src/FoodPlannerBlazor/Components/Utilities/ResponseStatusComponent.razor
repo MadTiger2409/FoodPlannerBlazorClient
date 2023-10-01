@@ -10,7 +10,7 @@
                 <button locator="responseStatusCloseButton" class="btn btn-close float-end" @onclick="Hide"></button>
             </div>
             <div class="card-body">
-                <p>@SuccessMessage</p>
+                <p locator="responseStatusSuccessMessage">@SuccessMessage</p>
             </div>
         }
         else
@@ -20,7 +20,7 @@
                 <button locator="responseStatusCloseButton" class="btn btn-close float-end" @onclick="Hide"></button>
             </div>
             <div class="card-body">
-                <ul class="list-group">
+                <ul locator="responseStatusErrorMessages" class="list-group">
                     @foreach (var detail in Response.Error.Details)
                     {
                         <li>@detail</li>

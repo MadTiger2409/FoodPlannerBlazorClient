@@ -1,29 +1,37 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using FoodPlannerBlazor.Domain.Entities.Common;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
+using System.Threading.Tasks;
 
 namespace FoodPlannerBlazor.Components.Modals
 {
-	public partial class DeleteEntityModalComponent : ComponentBase
-	{
-		private bool _deleteEntity = false;
+    public partial class DeleteEntityModalComponent<T> : ComponentBase where T : NamedEntity
+    {
+        [Parameter]
+        public T Entity { get; set; }
 
-		[Parameter]
-		public string EntityName { get; set; }
+        [Parameter]
+        public EventCallback<int?> OnDeleteEntity { get; set; }
 
-		[Parameter]
-		public bool DeleteEntity
-		{
-			get => _deleteEntity;
-			set
-			{
-				if (_deleteEntity == value)
-					return;
+        private string modalDisplay = "none;";
+        private string modalClass = "";
 
-				_deleteEntity = value;
-				DeleteEntityChanged.InvokeAsync(value);
-			}
-		}
+        public void Open()
+        {
+            modalDisplay = "block;";
+            modalClass = "fade show";
+        }
 
-		[Parameter]
-		public EventCallback<bool> DeleteEntityChanged { get; set; }
-	}
+        private async Task DeleteEntityAsync(MouseEventArgs e, int? entityId)
+        {
+            await OnDeleteEntity.InvokeAsync(entityId);
+            Close();
+        }
+
+        private void Close()
+        {
+            modalDisplay = "none";
+            modalClass = "";
+        }
+    }
 }
